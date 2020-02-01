@@ -100,6 +100,12 @@ cache_policy = Tree()
 
 # problem: we register 'TTL' and pass 'cache' and 'f_time' as arguments, however, the NetworkModel init assumes for every node a cache_size[node] as maxlen parameter, e.g. LruCache(10)
 # we want the call to be ttl_cache(LruCache(10), f_time) but it does ttl_cache(10, LruCache(10), f_time) instead
+# solved: manually changed in network.py
+
+# how to get a good f_time function
+
+# in engine.py > exec_experiment, strategy_inst.process_event must be passed time, event where event has ttl or expires values
+# time is a float type
 
 # cache_policy['name']   = 'TTL'
 # cache_policy['cache']  = cache.FifoCache(5)
