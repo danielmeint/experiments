@@ -2,6 +2,8 @@
 
 # unter 'normalen' request gibt es nur writes zur eigenen Adresse (sourceAddress == destinationServiceAddress) oder an den destinationServiceType == batteryService, v.a. an washing machines (?)
 
+# subscribe operations von questioningservices, i.e. smartphones NUR AN SICH SELBST
+
 # timestamp 1520031600000
 # Assuming that this timestamp is in milliseconds:
 # GMT: Friday, 2. March 2018 23:00:00
@@ -18,18 +20,18 @@ agents = set()
 edges  = set()
 services = set()
 
-requests = []
+trace = []
 
 lastWrite = 0
 tempin3interUpdateTimes = []
 
 def setup():
-    with open('/Users/danielmeint/Desktop/fullTrace.csv', 'rt') as f:
+    with open('trace/fullTrace.csv', 'rt') as f:
         reader = csv.reader(f, delimiter=',')
         next(reader) # skip the first row / header
         for row in reader:
             sourceID,sourceAddress,sourceType,sourceLocation,destinationServiceAddress,destinationServiceType,destinationLocation,accessedNodeAddress,accessedNodeType,operation,value,timestamp,normality = row
-            requests.append({
+            trace.append({
                 'sourceID': sourceID,
                 'sourceAddress': sourceAddress,
                 'sourceType': sourceType,
@@ -71,8 +73,8 @@ def draw_graph(graph):
 
 
 def plotWriteInterarrivalTimes(sensor='tempin3'):
-    normalRequests = [request for request in requests if request['normality'] == 'normal']
-    updates = [r for r in requests if r['sourceID'] == sensor and r['operation'] == 'write']
+    normalRequests = [request for request in trace if request['normality'] == 'normal']
+    updates = [r for r in normalRequests if r['sourceID'] == sensor and r['operation'] == 'write']
     interarrivaltimes = [int(updates[i]['timestamp']) - int(updates[i-1]['timestamp']) for i in range(1, len(updates))]
     
     fig1, ax1 = plt.subplots()
@@ -105,14 +107,44 @@ def getEdges(trace):
     return res
 
 def getNormalRequests(trace):
-    return [r for r in requests if r['normality'] == 'normal']
+    return [r for r in trace if r['normality'] == 'normal']
 
 def main():
     setup()
-    edges = getEdges(getNormalRequests(requests))
-    print(edges)
-    draw_graph(edges)
-    # print(getRooms([r for r in requests if r['normality'] == 'normal']))
+    normalRequests = getNormalRequests(trace)
+    agents = set(['agent1', 'agent2', 'agent3', 'agent4', 'agent5', 'agent6'])
+    requests = []
+    for r in normalRequests:
+        srcAgent = r['sourceAddress'].split('/')[1]
+        dstAgent = r['destinationServiceAddress'].split('/')[1].strip()
+        srcId    = r['sourceID']
+        dstId    = r['destinationServiceAddress'].split('/')[2].strip()
+        time     = r['timestamp']
+        op       = r['operation']
+        normal   = True if r['normality'] == 'normal' else False
+
+        if normal and srcAgent in agents and dstAgent in agents and op in ['read', 'write']:
+            requests.append({
+                'srcAgent': srcAgent,
+                'srcId'   : srcId,
+                'dstAgent': dstAgent,
+                'dstId'   : dstId,
+                'time'    : time,
+                'op'      : op
+            })
+    
+    # keys = requests[0].keys()
+    # print(keys)
+    # with open('trace/subTrace.csv', 'w') as output_file:
+    #     dict_writer = csv.DictWriter(output_file, keys)
+    #     dict_writer.writeheader()
+    #     dict_writer.writerows(requests)
+    
+
+    # edges = getEdges(getNormalRequests(trace))
+    # print(edges)
+    # draw_graph(edges)
+    # print(getRooms([r for r in trace if r['normality'] == 'normal']))
 
 
 if __name__ == "__main__":
