@@ -2,6 +2,8 @@
 
 # unter 'normalen' request gibt es nur writes zur eigenen Adresse (sourceAddress == destinationServiceAddress) oder an den destinationServiceType == batteryService, v.a. an washing machines (?)
 
+# washingmachine3,/agent14/washingmachine3,/washingService,Showerroom,/agent12/battery5,/batteryService,Entrance,/agent12/battery5/charge,/basic/number,write,9,1520032100782,normal
+
 # subscribe operations von questioningservices, i.e. smartphones NUR AN SICH SELBST
 
 # timestamp 1520031600000
@@ -77,6 +79,8 @@ def plotWriteInterarrivalTimes(sensor='tempin3'):
     updates = [r for r in normalRequests if r['sourceID'] == sensor and r['operation'] == 'write']
     interarrivaltimes = [int(updates[i]['timestamp']) - int(updates[i-1]['timestamp']) for i in range(1, len(updates))]
     
+    print(plt.subplots())
+
     fig1, ax1 = plt.subplots()
     ax1.set_title('Time between updates for a temperature sensor in ms')
     ax1.boxplot(interarrivaltimes, showfliers=False)
@@ -109,42 +113,78 @@ def getEdges(trace):
 def getNormalRequests(trace):
     return [r for r in trace if r['normality'] == 'normal']
 
+# def main():
+#     setup()
+#     normalRequests = getNormalRequests(trace)
+#     agents = set(['agent1', 'agent2', 'agent3', 'agent4', 'agent5', 'agent6'])
+#     requests = []
+#     for r in normalRequests:
+#         srcAgent = r['sourceAddress'].split('/')[1]
+#         dstAgent = r['destinationServiceAddress'].split('/')[1].strip()
+#         srcId    = r['sourceID']
+#         dstId    = r['destinationServiceAddress'].split('/')[2].strip()
+#         time     = r['timestamp']
+#         op       = r['operation']
+#         normal   = True if r['normality'] == 'normal' else False
+
+#         if normal and srcAgent in agents and dstAgent in agents and op in ['read', 'write']:
+#             requests.append({
+#                 'srcAgent': srcAgent,
+#                 'srcId'   : srcId,
+#                 'dstAgent': dstAgent,
+#                 'dstId'   : dstId,
+#                 'time'    : time,
+#                 'op'      : op
+#             })
+    
+#     # keys = requests[0].keys()
+#     # print(keys)
+#     # with open('trace/subTrace.csv', 'w') as output_file:
+#     #     dict_writer = csv.DictWriter(output_file, keys)
+#     #     dict_writer.writeheader()
+#     #     dict_writer.writerows(requests)
+    
+
+#     # edges = getEdges(getNormalRequests(trace))
+#     # print(edges)
+#     # draw_graph(edges)
+#     # print(getRooms([r for r in trace if r['normality'] == 'normal']))
+
+def read_csv(path):
+    res = []
+    with open(path) as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            res.append(row)
+    return res
+
+def write_dict_to_csv(path, dict):
+    keys = dict[0].keys()
+    with open(path, 'w') as output_file:
+        dict_writer = csv.DictWriter(output_file, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(dict)
+
 def main():
-    setup()
-    normalRequests = getNormalRequests(trace)
-    agents = set(['agent1', 'agent2', 'agent3', 'agent4', 'agent5', 'agent6'])
-    requests = []
-    for r in normalRequests:
-        srcAgent = r['sourceAddress'].split('/')[1]
-        dstAgent = r['destinationServiceAddress'].split('/')[1].strip()
-        srcId    = r['sourceID']
-        dstId    = r['destinationServiceAddress'].split('/')[2].strip()
-        time     = r['timestamp']
-        op       = r['operation']
-        normal   = True if r['normality'] == 'normal' else False
-
-        if normal and srcAgent in agents and dstAgent in agents and op in ['read', 'write']:
-            requests.append({
-                'srcAgent': srcAgent,
-                'srcId'   : srcId,
-                'dstAgent': dstAgent,
-                'dstId'   : dstId,
-                'time'    : time,
-                'op'      : op
-            })
-    
-    # keys = requests[0].keys()
-    # print(keys)
-    # with open('trace/subTrace.csv', 'w') as output_file:
-    #     dict_writer = csv.DictWriter(output_file, keys)
-    #     dict_writer.writeheader()
-    #     dict_writer.writerows(requests)
+    trace = read_csv('trace/subTrace.csv')
+    contents = sorted(set([r['dstId'] for r in trace]))
+    for c in contents:
+        print(c)
+    # sensors = [f'tempin{id}' for id in range(1, 7)]
     
 
-    # edges = getEdges(getNormalRequests(trace))
-    # print(edges)
-    # draw_graph(edges)
-    # print(getRooms([r for r in trace if r['normality'] == 'normal']))
+    # updates = [r for r in normalRequests if r['sourceID'] == sensor and r['operation'] == 'write']
+    # interarrivaltimes = [int(updates[i]['timestamp']) - int(updates[i-1]['timestamp']) for i in range(1, len(updates))]
+    
+    # print(plt.subplots())
+
+    # fig1, ax1 = plt.subplots()
+    # ax1.set_title('Time between updates for a temperature sensor in ms')
+    # ax1.boxplot(interarrivaltimes, showfliers=False)
+    # plt.xticks([1], [sensor])
+
+    # plt.show()
+
 
 
 if __name__ == "__main__":
