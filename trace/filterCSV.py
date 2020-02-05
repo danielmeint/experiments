@@ -139,7 +139,7 @@ def getNormalRequests(trace):
     
 #     # keys = requests[0].keys()
 #     # print(keys)
-#     # with open('trace/subTrace.csv', 'w') as output_file:
+#     # with open('trace/subTrace2.csv', 'w') as output_file:
 #     #     dict_writer = csv.DictWriter(output_file, keys)
 #     #     dict_writer.writeheader()
 #     #     dict_writer.writerows(requests)
@@ -158,20 +158,79 @@ def read_csv(path):
             res.append(row)
     return res
 
-def write_dict_to_csv(path, dict):
-    keys = dict[0].keys()
+def write_dict_array_to_csv(path, dict_array):
+    keys = dict_array[0].keys()
     with open(path, 'w') as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
-        dict_writer.writerows(dict)
+        dict_writer.writerows(dict_array)
+
+def plot_temp_sensor_updates():
+    trace = read_csv('trace/subTrace.csv')
+
+    sensors = [f'tempin{id}' for id in range(1, 7)]
+    updates = [
+        [
+            request for request in trace if request['srcId'] == sensor and request['op'] == 'write'
+        ] for sensor in sensors
+    ]
+    interarrivaltimes = [
+        [
+            int(row[i]['time']) - int(row[i-1]['time']) for i in range(1, len(row))
+        ] for row in updates
+    ]
+
+    fig, ax = plt.subplots()
+    # ax.set_title('Time between updates for temperature sensors in ms')
+    ax.boxplot(interarrivaltimes, showfliers=False)
+    plt.xticks([1, 2, 3, 4, 5, 6], ['tempin1', 'tempin2', 'tempin3', 'tempin4', 'tempin5', 'tempin6'])
+    plt.show()
+
+def boxplot(data):
+    fig, ax = plt.subplots()
+    ax.boxplot(data, showfliers=True)
+    plt.xticks([1], ['movement1/movement'])
+    plt.show()
 
 def main():
-    trace = read_csv('trace/subTrace.csv')
-    contents = sorted(set([r['dstId'] for r in trace]))
-    for c in contents:
-        print(c)
-    # sensors = [f'tempin{id}' for id in range(1, 7)]
-    
+    trace = read_csv('trace/subTrace2.csv')
+    contents = set([f"{r['accessedNodeAddress']}/v{r['version']}" for r in trace])
+    subtracereads = [r for r in trace if r['operation'] == 'read']
+    write_dict_array_to_csv('trace/subtrace_reads.csv', subtracereads)
+
+
+    # trace = read_csv('trace/fullTrace.csv')
+    # agents = set(['agent1', 'agent2', 'agent3', 'agent4', 'agent5', 'agent6'])
+    # nodes = set(['/agent6/lightcontrol6/lightOn', '/agent2/tempin2', '/agent5/lightcontrol5/lightOn', '/agent3/heatingcontrol1/heatingOn', '/agent6/washingmachine1/washing', '/agent5/battery1/charge', '/agent3/doorlock1/open', '/agent3/movement3/lastChange', '/agent4/battery3/charge', '/agent3/heatingcontrol1', '/agent3/tempin3', '/agent3/lightcontrol3/lightOn', '/agent5/movement5/movement', '/agent5/tempin5', '/agent6/movement6/movement', '/agent6/movement6/lastChange', '/agent1/tempin1', '/agent5/battery2/charge', '/agent5/movement5/lastChange', '/agent3/movement3/movement', '/agent2/movement2/movement', '/agent2/movement2/lastChange', '/agent6/tempin6', '/agent4/movement4/lastChange', '/agent4/movement4/movement', '/agent1/movement1/lastChange', '/agent4/battery3/charging', '/agent5/battery2/charging', '/agent2/lightcontrol2/lightOn', '/agent1/lightcontrol1/lightOn', '/agent4/lightcontrol4/lightOn', '/agent1/movement1/movement', '/agent4/tempin4', '/agent5/battery1/charging'])
+    # version = { node : 0 for node in nodes}
+    # sub_trace = []
+    # for r in trace:
+    #     srcAgent = r['sourceAddress'].split('/')[1]
+    #     dstAgent = r['destinationServiceAddress'].split('/')[1].strip()
+    #     accessedNode = r['accessedNodeAddress']
+
+    #     assert dstAgent == accessedNode.split('/')[1].strip()
+    #     normal = r['normality'] == 'normal'
+    #     operation = r['operation']
+    #     if normal and srcAgent in agents and dstAgent in agents and operation in ['read', 'write']:
+    #         if operation == 'write':
+    #             version[accessedNode] += 1
+    #         r.update({'version': version[accessedNode]})
+    #         sub_trace.append(r)
+    # write_dict_array_to_csv('trace/subTrace2.csv', sub_trace)
+
+
+
+
+
+    # tempin1_updates = [r for r in trace if r['accessedNodeAddress'] == '/agent1/tempin1' and r['operation'] == 'write' and r['normality'] == 'normal']
+    # interarrivaltimes = [int(tempin1_updates[i]['timestamp']) - int(tempin1_updates[i-1]['timestamp']) for i in range(1, len(tempin1_updates))]
+    # print(np.mean(interarrivaltimes), np.median(interarrivaltimes), np.var(interarrivaltimes))
+
+    # movement1_updates = [r for r in trace if r['accessedNodeAddress'] == '/agent1/movement1/movement' and r['operation'] == 'write' and r['normality'] == 'normal']
+    # interarrivaltimes = [int(movement1_updates[i]['timestamp']) - int(movement1_updates[i-1]['timestamp']) for i in range(1, len(movement1_updates))]
+    # print(len(interarrivaltimes), np.mean(interarrivaltimes), np.median(interarrivaltimes), np.var(interarrivaltimes))
+    # boxplot(interarrivaltimes)
 
     # updates = [r for r in normalRequests if r['sourceID'] == sensor and r['operation'] == 'write']
     # interarrivaltimes = [int(updates[i]['timestamp']) - int(updates[i-1]['timestamp']) for i in range(1, len(updates))]

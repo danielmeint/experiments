@@ -46,8 +46,8 @@ default['topology']['name'] = 'DS2OS'
 
 # Set workload
 default['workload'] = {
-         'name':       'DS2OS',
-         'reqs_file': '/Users/danielmeint/experiments/trace/subTrace.csv',
+         'name':            'DS2OS',
+         'reqs_file':       '/Users/danielmeint/experiments/trace/subTrace2.csv',
          'contents_file':   '/Users/danielmeint/experiments/trace/contents.txt'
         }
 
@@ -65,8 +65,8 @@ default['cache_placement']['name'] = 'UNIFORM'
 default['cache_placement']['network_cache'] = 0.01
 
 # Set content placement
-default['content_placement']['name'] = 'UNIFORM'
-# default['content_placement']['name'] = 'DS2OS'
+# default['content_placement']['name'] = 'UNIFORM'
+default['content_placement']['name'] = 'DS2OS'
 
 # caching meta-policies / placement strategies
 STRATEGIES = [
@@ -117,8 +117,6 @@ cache_policy = Tree()
 # cache_policy['name']   = 'TTL'
 # cache_policy['cache']  = cache.FifoCache(5)
 # cache_policy['f_time'] = lambda: 1
-
-print("the cache policy is", cache_policy)
 
 lce['cache_policy']['name'] = 'LRU'
 
