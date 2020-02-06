@@ -194,9 +194,14 @@ def boxplot(data):
 
 def main():
     trace = read_csv('trace/subTrace2.csv')
-    contents = set([f"{r['accessedNodeAddress']}/v{r['version']}" for r in trace])
-    subtracereads = [r for r in trace if r['operation'] == 'read']
-    write_dict_array_to_csv('trace/subtrace_reads.csv', subtracereads)
+    objects = set([r['accessedNodeAddress'] for r in trace])
+    print(objects)
+    print(len(objects))
+    # print(len([r for r in trace if r['operation'] == 'read']))
+
+    # contents = set([f"{r['accessedNodeAddress']}/v{r['version']}" for r in trace])
+    # subtracereads = [r for r in trace if r['operation'] == 'read']
+    # write_dict_array_to_csv('trace/subtrace_reads.csv', subtracereads)
 
 
     # trace = read_csv('trace/fullTrace.csv')

@@ -61,34 +61,26 @@ STRATEGY_STYLE = {
 STRATEGY_LEGEND = {
          'LCE':             'LCE',
          'LCD':             'LCD',
-         'HR_SYMM':         'HR Symm',
-         'HR_ASYMM':        'HR Asymm',
-         'HR_MULTICAST':    'HR Multicast',
-         'HR_HYBRID_AM':    'HR Hybrid AM',
-         'HR_HYBRID_SM':    'HR Hybrid SM',
-         'CL4M':            'CL4M',
+         'RAND_BERNOULLI':  'Prob(0.2)',
          'PROB_CACHE':      'ProbCache',
-         'RAND_CHOICE':     'Random (choice)',
-         'RAND_BERNOULLI':  'Random (Bernoulli)',
-         'NO_CACHE':        'No caching',
-         'OPTIMAL':         'Optimal'
+         'EDGE':            'Edge',
                     }
 
 # Color and hatch styles for bar charts of cache hit ratio and link load vs topology
 STRATEGY_BAR_COLOR = {
-    'LCE':          'k',
-    'LCD':          '0.4',
-    'NO_CACHE':     '0.5',
-    'HR_ASYMM':     '0.6',
-    'HR_SYMM':      '0.7'
+    'LCE':              'k',
+    'LCD':              '0.4',
+    'RAND_BERNOULLI':   '0.5',
+    'PROB_CACHE':       '0.6',
+    'EDGE':             '0.7'
     }
 
 STRATEGY_BAR_HATCH = {
-    'LCE':          None,
-    'LCD':          '//',
-    'NO_CACHE':     'x',
-    'HR_ASYMM':     '+',
-    'HR_SYMM':      '\\'
+    'LCE':              None,
+    'LCD':              '//',
+    'RAND_BERNOULLI':   'x',
+    'PROB_CACHE':       '+',
+    'EDGE':             '\\'
     }
 
 
@@ -333,6 +325,20 @@ def run(config, results, plotdir):
             plot_link_load_vs_topology(resultset, alpha, cache_size, topologies, strategies, plotdir)
     logger.info('Exit. Plots were saved in directory %s' % os.path.abspath(plotdir))
 
+def run_ds2os(config, results, plotdir):
+    settings = Settings()
+    settings.read_from(config)
+    config_logging(settings.LOG_LEVEL)
+    resultset = RESULTS_READER[settings.RESULTS_FORMAT](results)
+    if not os.path.exists(plotdir):
+        os.makedirs(plotdir)
+    topology = 'DS2OS'
+    alpha = 1.0 # TODO: calculate real alpha
+    cache_sizes = settings.NETWORK_CACHE
+    strategies = settings.STRATEGIES
+    print(cache_sizes, alpha, strategies)
+    plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
+    logger.info('Exit. Plots were saved in directory %s' % os.path.abspath(plotdir))
 
 def main():
     parser = argparse.ArgumentParser(__doc__)
@@ -345,7 +351,8 @@ def main():
     parser.add_argument("config",
                         help="the configuration file")
     args = parser.parse_args()
-    run(args.config, args.results, args.output)
+    # run(args.config, args.results, args.output)
+    run_ds2os(args.config, args.results, args.output)
 
 
 if __name__ == '__main__':

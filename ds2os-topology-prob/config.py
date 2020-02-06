@@ -41,6 +41,8 @@ EXPERIMENT_QUEUE = deque()
 # Create experiment
 default = Tree()
 
+
+
 # Set topology
 default['topology']['name'] = 'DS2OS'
 
@@ -60,33 +62,29 @@ default['workload'] = {
 #          'rate':       1
 #     }
 
+NETWORK_CACHE = [0.002, 0.004, 0.01, 0.05]
+
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'
-default['cache_placement']['network_cache'] = 0.01
+# default['cache_placement']['network_cache'] = 0.01
 
 # Set content placement
 # default['content_placement']['name'] = 'UNIFORM'
 default['content_placement']['name'] = 'DS2OS'
 
-# caching meta-policies / placement strategies
-STRATEGIES = [
-     'LCE',             # Leave Copy Everywhere
-     # 'NO_CACHE',        # No caching, shortest-path routing
-     'PROB_CACHE',      # ProbCache
-     'RAND_BERNOULLI',  # Random Bernoulli: cache randomly in caches on path
-    ]
+# !!! lce and lcd gave same cache hit ratio? only single-hops? but chr for individual agents differ??
 
 # default['strategy']['name'] = 'LCD'
 
 # Cache replacement policies
-REPLACEMENT_POLICIES = [
-    'LRU',
-    'PERFECT_LFU',
-    'IN_CACHE_LFU',
-    'RAND',
-]
+# REPLACEMENT_POLICIES = [
+#     'LRU',
+#     'PERFECT_LFU',
+#     'IN_CACHE_LFU',
+#     'RAND',
+# ]
 
-# default['cache_policy']['name'] = 'LRU'
+default['cache_policy']['name'] = 'LRU'
 
 p02 = copy.deepcopy(default)
 p05 = copy.deepcopy(default)
@@ -114,23 +112,17 @@ cache_policy = Tree()
 # in engine.py > exec_experiment, strategy_inst.process_event must be passed time, event where event has ttl or expires values
 # time is a float type
 
-# cache_policy['name']   = 'TTL'
-# cache_policy['cache']  = cache.FifoCache(5)
-# cache_policy['f_time'] = lambda: 1
+# 0.3317255144228485
 
-lce['cache_policy']['name'] = 'LRU'
 
-lce['desc'] = 'DS2OS topology, LCE placement, LRU replacement'
+# !!! eigentlich sollte v5 v4 ersetzen
 
-# EXPERIMENT_QUEUE.append(p02)
-# EXPERIMENT_QUEUE.append(p05)
+PROB_P = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]
 
-EXPERIMENT_QUEUE.append(lce)
-
-# for strategy in STRATEGIES:
-#     for policy in REPLACEMENT_POLICIES:
-#         experiment = copy.deepcopy(default)
-#         experiment['strategy']['name'] = strategy
-#         experiment['cache_policy']['name'] = policy
-#         experiment['desc'] = f'DS2OS topology, {strategy} placement strategy, {policy} replacement'
-#         EXPERIMENT_QUEUE.append(experiment)
+for p in PROB_P:
+    experiment = copy.deepcopy(default)
+    experiment['strategy']['name'] = 'RAND_BERNOULLI'
+    experiment['strategy']['p']    = p
+    experiment['cache_placement']['network_cache'] = 0.002
+    experiment['desc'] = f'DS2OS topology, Prob({p}) placement, LRU replacement, 0.002 network cache'
+    EXPERIMENT_QUEUE.append(experiment)
