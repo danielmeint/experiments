@@ -62,7 +62,7 @@ default['workload'] = {
 #          'rate':       1
 #     }
 
-NETWORK_CACHE = [0.002, 0.004, 0.01, 0.05]
+NETWORK_CACHE = [0.0001, 0.0005, 0.001, 0.002, 0.004, 0.01]
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'
