@@ -192,11 +192,41 @@ def boxplot(data):
     plt.xticks([1], ['movement1/movement'])
     plt.show()
 
+def plot_table_ch():
+    x_values = [0.0001, 0.0005, 0.001, 0.002, 0.004, 0.01]
+    # cache hit ratios for lce, lcd, edge, probcache, prob(0.2)
+    data = [[0.04728413249061446, 0.23214370574537851, 0.38405883191560136, 0.3932186475312455, 0.3932424084018438, 0.3932661692724421], [0.11419474409542366, 0.3142137527919023, 0.3931948866606472, 0.3932305279665447, 0.3932305279665447, 0.3932424084018438], [0.11692724421422801, 0.3076201112008744, 0.3851637123984223, 0.3908900822126123, 0.39090196264791144, 0.3909376039538089], [0.15474266977142043, 0.3134177636268593, 0.3275198403269496, 0.32517939457301714, 0.32831582949199256, 0.32689017725609465], [0.13432020149218268, 0.3401131017440479, 0.3570902437865323, 0.35909803735208856, 0.3596801786817469, 0.35900299386969536]]
+    plt.xscale('log')
+    # plt.xticks(x_values)
+    plt.plot(x_values[:-2], data[0][:-2], marker='', label='LCE')
+    plt.plot(x_values[:-2], data[1][:-2], marker='x', label='LCD')
+    plt.plot(x_values[:-2], data[2][:-2], marker='+', label='Edge')
+    plt.plot(x_values[:-2], data[3][:-2], marker='|', label='ProbCache')
+    plt.plot(x_values[:-2], data[4][:-2], marker='_', label='Prob(0.2)')
+    plt.legend()
+    plt.show()
+
+def plot_table_latency():
+    x_values = [0.0001, 0.0005, 0.001, 0.002, 0.004, 0.01]
+    data = [[7.204082117568788, 6.217103074656656, 5.303877774081642, 5.251841467471368, 5.2516276196359835, 5.251437532671197], [6.936534714631944, 6.038635175592834, 5.59929667823029, 5.598916504300718, 5.598916504300718, 5.598868982559521], [6.9256047141567265, 5.913557952763389, 5.298887991256, 5.261274533098892, 5.2611794896165, 5.260870598298721], [6.652877441429454, 5.89426412583757, 5.824169557572589, 5.827662405550539, 5.809960556954807, 5.827709927291736], [6.733973292781448, 5.747968445563846, 5.6634035071045, 5.632728223162097, 5.63184907094996, 5.638050658176115]]
+    plt.xscale('log')
+    plt.plot(x_values, data[0], marker='', label='LCE')
+    plt.plot(x_values, data[1], marker='x', label='LCD')
+    plt.plot(x_values, data[2], marker='+', label='Edge')
+    plt.plot(x_values, data[3], marker='|', label='ProbCache')
+    plt.plot(x_values, data[4], marker='_', label='Prob(0.2)')
+    plt.legend()
+    plt.show()
+
+def convert(str):
+    return [float(x.strip()) for x in str.split('&')]
+
 def main():
-    trace = read_csv('trace/subTrace2.csv')
-    objects = set([r['accessedNodeAddress'] for r in trace])
-    print(objects)
-    print(len(objects))
+    print('hello')
+    # trace = read_csv('trace/subTrace2.csv')
+    # objects = set([r['accessedNodeAddress'] for r in trace])
+    # print(objects)
+    # print(len(objects))
     # print(len([r for r in trace if r['operation'] == 'read']))
 
     # contents = set([f"{r['accessedNodeAddress']}/v{r['version']}" for r in trace])

@@ -337,8 +337,53 @@ def run_ds2os(config, results, plotdir):
     cache_sizes = settings.NETWORK_CACHE
     strategies = settings.STRATEGIES
     print(cache_sizes, alpha, strategies)
-    plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
+    # plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
+    ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_sizes, strategies, plotdir)
+    ds2os_plot_latency_vs_cache_size(resultset, topology, cache_sizes, strategies, plotdir)
     logger.info('Exit. Plots were saved in directory %s' % os.path.abspath(plotdir))
+
+def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, strategies, plotdir):
+    desc = {}
+    if 'NO_CACHE' in strategies:
+        strategies.remove('NO_CACHE')
+    # desc['title'] = f'Cache hit ratio: T={topology}'
+    desc['xlabel'] = 'Cache to population ratio'
+    desc['ylabel'] = 'Cache hit ratio'
+    desc['xscale'] = 'log'
+    desc['xparam'] = ('cache_placement', 'network_cache')
+    desc['xvals'] = cache_size_range
+    desc['filter'] = {'topology': {'name': topology},
+                      'workload': {'name': 'DS2OS'}}
+    desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(strategies)
+    desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
+    desc['ycondvals'] = strategies
+    desc['errorbar'] = True
+    desc['legend_loc'] = 'lower right'
+    desc['line_style'] = STRATEGY_STYLE
+    desc['legend'] = STRATEGY_LEGEND
+    desc['plotempty'] = PLOT_EMPTY_GRAPHS
+    plot_lines(resultset, desc, f'CACHE_HIT_RATIO_T={topology}.pdf', plotdir)
+
+def ds2os_plot_latency_vs_cache_size(resultset, topology, cache_size_range, strategies, plotdir):
+    desc = {}
+    # desc['title'] = f'Latency: T={topology}'
+    desc['xlabel'] = 'Cache to population ratio'
+    desc['ylabel'] = 'Latency'
+    desc['xscale'] = 'log'
+    desc['xparam'] = ('cache_placement', 'network_cache')
+    desc['xvals'] = cache_size_range
+    desc['filter'] = {'topology': {'name': topology},
+                      'workload': {'name': 'DS2OS'}}
+    desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(strategies)
+    desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
+    desc['ycondvals'] = strategies
+    desc['metric'] = ('LATENCY', 'MEAN')
+    desc['errorbar'] = True
+    desc['legend_loc'] = 'upper right'
+    desc['line_style'] = STRATEGY_STYLE
+    desc['legend'] = STRATEGY_LEGEND
+    desc['plotempty'] = PLOT_EMPTY_GRAPHS
+    plot_lines(resultset, desc, f'LATENCY_T={topology}.pdf', plotdir)
 
 def main():
     parser = argparse.ArgumentParser(__doc__)

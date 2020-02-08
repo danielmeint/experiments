@@ -62,7 +62,8 @@ default['workload'] = {
 #          'rate':       1
 #     }
 
-NETWORK_CACHE = [0.0001, 0.0005, 0.001, 0.002, 0.004, 0.01]
+# mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
+NETWORK_CACHE = [0.00018, 0.00035, 0.0005, 0.001, 0.002, 0.005]
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'
