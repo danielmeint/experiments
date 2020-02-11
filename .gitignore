@@ -1,3 +1,7 @@
+# daniel
+.DS_Store
+.vscode/
+
 # Ignore results
 *.pickle
 
