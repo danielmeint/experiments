@@ -5,19 +5,33 @@ from icarus.util import Tree
 
 import icarus.models as cache
 
+import csv
+
 TRACE_PATH    = '/Users/danielmeint/experiments/trace/subTrace2.csv'
 CONTENTS_PATH = '/Users/danielmeint/experiments/trace/contents.txt'
 
-# def read_csv(path):
-#     res = []
-#     with open(path) as file:
-#         reader = csv.DictReader(file)
-#         for row in reader:
-#             res.append(row)
-#     return res
+def read_csv(path):
+    res = []
+    with open(path) as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            res.append(row)
+    return res
 
-# # needed for MIN policy
-# TRACE = [request['accessedNodeAddress'] for request in read_csv(TRACE_PATH)]
+# needed for MIN policy
+TRACE = []
+count = 0
+for request in read_csv(TRACE_PATH):
+    address = request['accessedNodeAddress']
+    version = request['version']
+    entry   = f'{address}/v{version}'
+    if entry == '/agent4/movement4/movement/v0':
+        count += 1
+    TRACE.append(entry)
+# TRACE = [f'{request['accessedNodeAddress']}/v{request['version']}' for request in read_csv(TRACE_PATH)]
+
+print(len(TRACE))
+print(count)
 
 # GENERAL SETTINGS
 
@@ -67,6 +81,7 @@ default['workload'] = {
 
 # mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
 NETWORK_CACHE = [0.00018, 0.00035, 0.0005, 0.0007, 0.001, 0.002, 0.005]
+# NETWORK_CACHE = [0.00035, 0.002]
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'
@@ -80,10 +95,12 @@ default['strategy']['name'] = 'LCE'
 # Cache replacement policies
 REPLACEMENT_POLICIES = [
     # 'MIN',
+    'NULL',
     'LRU',
     'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
     'PERFECT_LFU',
     'IN_CACHE_LFU',
+    # 'IN_CACHE_LFU_EVICT_FIRST',
     'RAND',
 ]
 
@@ -94,11 +111,12 @@ for policy in REPLACEMENT_POLICIES:
     for network_cache in NETWORK_CACHE:
         experiment = copy.deepcopy(default)
         experiment['cache_policy']['name'] = policy
-
+        if policy == 'MIN':
+            experiment['cache_policy']['trace'] = TRACE
         experiment['cache_placement']['network_cache'] = network_cache
         experiment['desc'] = f'DS2OS topology, LCE placement strategy, {policy} replacement, {network_cache} network cache'
         # segments must be an integer and 0 < segments <= maxlen
         # alternatively manually set segments = 1; default is 2
         if policy == 'SLRU' and network_cache == 0.00018:
-            continue
+            experiment['cache_policy']['segments'] = 1
         EXPERIMENT_QUEUE.append(experiment)

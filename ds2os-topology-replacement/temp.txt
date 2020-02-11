@@ -1,0 +1,579 @@
+EXPERIMENT 1/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00018
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.00018 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.04728413249061446
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0003088913177778834, 'agent2': 0.000297010882478734, 'agent1': 0.02309556622154636, 'agent3': 0.022976761868554865, 'agent6': 0.00026136957658128593, 'agent5': 0.00034453262367533147})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.048947393432495365, 'movement1/source': 0.026350805493513284, 'movement4/source': 0.048947393432495365, 'movement3/source': 0.02624388157582094, 'movement6/source': 0.048971154303093664, 'movement5/source': 0.048911752126597915, 'tempin1/source': 0.02624388157582094, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026457729411205628, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026338925058214134, 'battery1/source': 0.2229720096944352, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2202751508815283, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 14.408164235137576
+
+EXPERIMENT 2/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00035
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.00035 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.10194601530200066
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0009741956945302476, 'agent2': 0.0011405217887183387, 'agent1': 0.04925628475027325, 'agent3': 0.04819892600864896, 'agent6': 0.0011642826593166373, 'agent5': 0.001211804400513235})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.048282089055743, 'movement1/source': 0.0004870978472651238, 'movement4/source': 0.0483296107969396, 'movement3/source': 0.0011999239652140854, 'movement6/source': 0.04834149123223875, 'movement5/source': 0.04829396949104215, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026327044622914984, 'tempin3/source': 0.026279522881718385, 'tempin4/source': 0.02643396854060733, 'tempin5/source': 0.026041914175735398, 'tempin6/source': 0.026113196787530296, 'battery1/source': 0.222876966212042, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.22023950957563085, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 13.97010882478734
+
+EXPERIMENT 3/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.0005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.23214370574537851
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.022216414009409303, 'agent2': 0.02214513139761441, 'agent1': 0.04951765432685454, 'agent3': 0.0484484151499311, 'agent6': 0.0623841657558333, 'agent5': 0.027431925105735874})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.027812099035308655, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.02769329468231716, 'movement3/source': 0.0011761630946157868, 'movement6/source': 0.028014066435394194, 'movement5/source': 0.027253718576248635, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02617259896402604, 'tempin3/source': 0.026053794611034548, 'tempin4/source': 0.026303283752316685, 'tempin5/source': 0.025923109822743904, 'tempin6/source': 0.026006272869837952, 'battery1/source': 0.1995081499786152, 'battery3/source': 0.10271824359644538, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.19691821508340066, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 12.434206149313312
+
+EXPERIMENT 4/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0007
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.0007 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3679370812146557
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04391008886565604, 'agent2': 0.04430214323052797, 'agent1': 0.04951765432685454, 'agent3': 0.04846029558523024, 'agent6': 0.1360072233046619, 'agent5': 0.04573967590172504})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.005666967637694245, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.005892695908378083, 'movement3/source': 0.0011761630946157868, 'movement6/source': 0.005179869790429122, 'movement5/source': 0.0039799458252150356, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02587558808154731, 'tempin3/source': 0.026041914175735398, 'tempin4/source': 0.025958751128641353, 'tempin5/source': 0.025792425034453264, 'tempin6/source': 0.025768664163854964, 'battery1/source': 0.17714917074561612, 'battery3/source': 0.10271824359644538, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.745330988927435
+
+EXPERIMENT 5/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.001
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.001 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.38405883191560136
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.047509860761298296, 'agent2': 0.04831773036164045, 'agent1': 0.04951765432685454, 'agent3': 0.048662262985315785, 'agent6': 0.14061683220073184, 'agent5': 0.04943449127976049})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0016038587653851638, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.0023285653186332746, 'movement3/source': 0.0011642826593166373, 'movement6/source': 0.0016632609418809105, 'movement5/source': 0.000297010882478734, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02586370764624816, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02588746851684646, 'tempin5/source': 0.025768664163854964, 'tempin6/source': 0.025768664163854964, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.10174404790191513, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.607755548163285
+
+EXPERIMENT 6/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.002
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.002 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3932186475312455
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04944637171505964, 'agent2': 0.04960081737394858, 'agent1': 0.04951765432685454, 'agent3': 0.04948201302095709, 'agent6': 0.1457372998146652, 'agent5': 0.04943449127976049})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.000297010882478734, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.00040393480017107827, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.0004158152354702276, 'movement5/source': 0.000297010882478734, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02586370764624816, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02586370764624816, 'tempin5/source': 0.025768664163854964, 'tempin6/source': 0.025756783728555815, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.503682934942736
+
+EXPERIMENT 7/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: LRU
+   * desc -> DS2OS topology, LCE placement strategy, LRU replacement, 0.005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3932424084018438
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04944637171505964, 'agent2': 0.04960081737394858, 'agent1': 0.04954141519745284, 'agent3': 0.04948201302095709, 'agent6': 0.1457372998146652, 'agent5': 0.04943449127976049})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.000297010882478734, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.00040393480017107827, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.0004158152354702276, 'movement5/source': 0.000297010882478734, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02586370764624816, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02586370764624816, 'tempin5/source': 0.025768664163854964, 'tempin6/source': 0.025756783728555815, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 2.3760870598298723e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 10.503255239271967
+
+EXPERIMENT 8/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00035
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: SLRU
+   * desc -> DS2OS topology, LCE placement strategy, SLRU replacement, 0.00035 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.08545597110678135
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.010846837428123366, 'agent2': 0.010609228722140379, 'agent1': 0.025459772846077082, 'agent3': 0.02378463146889702, 'agent6': 0.008411348191797747, 'agent5': 0.0063441524497457585})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.03865893646343202, 'movement1/source': 0.02399847930428171, 'movement4/source': 0.03840944732214988, 'movement3/source': 0.025436011975478783, 'movement6/source': 0.04083305612317635, 'movement5/source': 0.04291213230052749, 'tempin1/source': 0.02623200114052179, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026457729411205628, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026327044622914984, 'battery1/source': 0.2229482488238369, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2202751508815283, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 14.102599439243454
+
+EXPERIMENT 9/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: SLRU
+   * desc -> DS2OS topology, LCE placement strategy, SLRU replacement, 0.0005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.08897257995532956
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.010846837428123366, 'agent2': 0.010609228722140379, 'agent1': 0.027788338164710356, 'agent3': 0.02378463146889702, 'agent6': 0.009599391721712683, 'agent5': 0.0063441524497457585})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.03865893646343202, 'movement1/source': 0.021693674856246733, 'movement4/source': 0.03840944732214988, 'movement3/source': 0.025436011975478783, 'movement6/source': 0.03964501259326142, 'movement5/source': 0.04291213230052749, 'tempin1/source': 0.02620824026992349, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026457729411205628, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026327044622914984, 'battery1/source': 0.2229482488238369, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2202751508815283, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 14.074466568455069
+
+EXPERIMENT 10/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0007
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: SLRU
+   * desc -> DS2OS topology, LCE placement strategy, SLRU replacement, 0.0007 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.2754597728460771
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0343463384498408, 'agent2': 0.037031316827448556, 'agent1': 0.04951765432685454, 'agent3': 0.04904243691488856, 'agent6': 0.07152022050087915, 'agent5': 0.03400180582616547})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.01467233759444946, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.015456446324193318, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.017998859478211282, 'movement5/source': 0.01594354417145844, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02623200114052179, 'tempin3/source': 0.026279522881718385, 'tempin4/source': 0.02643396854060733, 'tempin5/source': 0.026041914175735398, 'tempin6/source': 0.026113196787530296, 'battery1/source': 0.2016466283324621, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.19833198688399942, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 12.082355177493703
+
+EXPERIMENT 11/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.001
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: SLRU
+   * desc -> DS2OS topology, LCE placement strategy, SLRU replacement, 0.001 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.38793185382312406
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04950577389155539, 'agent2': 0.05171553485719717, 'agent1': 0.04951765432685454, 'agent3': 0.04928004562087155, 'agent6': 0.1346409732452597, 'agent5': 0.053271871881385734})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0004870978472651238, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.0004752174119659744, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.0009504348239319488, 'movement5/source': 0.0003564130589744808, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02588746851684646, 'tempin3/source': 0.026041914175735398, 'tempin4/source': 0.026041914175735398, 'tempin5/source': 0.025792425034453264, 'tempin6/source': 0.025792425034453264, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.10186285225490661, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17458299672099986, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.636648766810817
+
+EXPERIMENT 12/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.002
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: SLRU
+   * desc -> DS2OS topology, LCE placement strategy, SLRU replacement, 0.002 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3931592453547498
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04942261084446134, 'agent2': 0.04958893693864943, 'agent1': 0.04951765432685454, 'agent3': 0.04947013258565794, 'agent6': 0.1457372998146652, 'agent5': 0.04942261084446134})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0003088913177778834, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.0004158152354702276, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.0004158152354702276, 'movement5/source': 0.0003088913177778834, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02586370764624816, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02587558808154731, 'tempin5/source': 0.025768664163854964, 'tempin6/source': 0.025756783728555815, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.504158152354702
+
+EXPERIMENT 13/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: SLRU
+   * desc -> DS2OS topology, LCE placement strategy, SLRU replacement, 0.005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3932305279665447
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04944637171505964, 'agent2': 0.04960081737394858, 'agent1': 0.04952953476215369, 'agent3': 0.04948201302095709, 'agent6': 0.1457372998146652, 'agent5': 0.04943449127976049})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.000297010882478734, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.00040393480017107827, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.0004158152354702276, 'movement5/source': 0.000297010882478734, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02586370764624816, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02586370764624816, 'tempin5/source': 0.025768664163854964, 'tempin6/source': 0.025756783728555815, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 10.50349284797795
+
+EXPERIMENT 14/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00018
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.00018 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.23681271681794422
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.03753029511001283, 'agent2': 0.03527301240317445, 'agent1': 0.04887611082070047, 'agent3': 0.04872166516181153, 'agent6': 0.019483913890604953, 'agent5': 0.04692771943163997})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.015028750653423942, 'movement1/source': 0.0003326521883761821, 'movement4/source': 0.012605141852397472, 'movement3/source': 0.0004989782825642732, 'movement6/source': 0.03308701230813097, 'movement5/source': 0.002696858812906905, 'tempin1/source': 0.026481490281803924, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026457729411205628, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.02636268592881243, 'tempin6/source': 0.02642208810530818, 'battery1/source': 0.22204533574110155, 'battery3/source': 0.09880958038302523, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2192653138811006, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 12.854535950197215
+
+EXPERIMENT 15/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00035
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.00035 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.32574965546737633
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.06560376372190277, 'agent2': 0.057501306847882905, 'agent1': 0.04928004562087155, 'agent3': 0.04887611082070047, 'agent6': 0.05170365442189802, 'agent5': 0.05278477403412061})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0020196740008553912, 'movement1/source': 0.0002851304471795847, 'movement4/source': 0.0014969348476928195, 'movement3/source': 0.00042769567076937696, 'movement6/source': 0.0035284892838473602, 'movement5/source': 0.0008435109062396046, 'tempin1/source': 0.026125077222829446, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.02637456636411158, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.026315164187615835, 'tempin6/source': 0.02642208810530818, 'battery1/source': 0.20619683505203631, 'battery3/source': 0.09798983034738393, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.20313168274485577, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 11.97277004229435
+
+EXPERIMENT 16/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.0005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.330656275245925
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0484484151499311, 'agent2': 0.0556479589412156, 'agent1': 0.0492919260561707, 'agent3': 0.04901867604429026, 'agent6': 0.07918310126883049, 'agent5': 0.04906619778548686})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0008672717768379033, 'movement1/source': 0.0002851304471795847, 'movement4/source': 0.001152402224017488, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.001615739200684313, 'movement5/source': 0.0008197500356413059, 'tempin1/source': 0.026113196787530296, 'tempin2/source': 0.026481490281803924, 'tempin3/source': 0.026303283752316685, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.026303283752316685, 'tempin6/source': 0.02638644679941073, 'battery1/source': 0.20570973720477118, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.20243073706220596, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 11.721570118329135
+
+EXPERIMENT 17/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0007
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.0007 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3322007318348144
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.048971154303093664, 'agent2': 0.05609941548258328, 'agent1': 0.04949389345625624, 'agent3': 0.04903055647958941, 'agent6': 0.07924250344532624, 'agent5': 0.04936320866796559})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0008672717768379033, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.00111676091812004, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.001615739200684313, 'movement5/source': 0.0008197500356413059, 'tempin1/source': 0.025982511999239653, 'tempin2/source': 0.026481490281803924, 'tempin3/source': 0.026303283752316685, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.026291403317017535, 'tempin6/source': 0.02638644679941073, 'battery1/source': 0.20503255239271967, 'battery3/source': 0.09790666730028988, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2018367152972485, 'heatingcontrol1/source': 2.3760870598298723e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 11.702894074038873
+
+EXPERIMENT 18/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.001
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.001 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.3351233189184052
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04964833911514518, 'agent2': 0.05689540464762629, 'agent1': 0.04954141519745284, 'agent3': 0.04925628475027325, 'agent6': 0.07980088390438626, 'agent5': 0.04998099130352136})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0008672717768379033, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.0011048804828208906, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.001615739200684313, 'movement5/source': 0.0008197500356413059, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026481490281803924, 'tempin3/source': 0.026065675046333697, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.026291403317017535, 'tempin6/source': 0.02638644679941073, 'battery1/source': 0.20372570450981323, 'battery3/source': 0.09793042817088818, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.20048234567314546, 'heatingcontrol1/source': 2.3760870598298723e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 11.66354607232809
+
+EXPERIMENT 19/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.002
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.002 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.34089721047379173
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.051157154398137145, 'agent2': 0.05798840469514803, 'agent1': 0.04954141519745284, 'agent3': 0.04948201302095709, 'agent6': 0.08129781875207907, 'agent5': 0.05143040441001758})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0008435109062396046, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.0010335978710259944, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.001580097894786865, 'movement5/source': 0.0007365869885472603, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026481490281803924, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.026291403317017535, 'tempin6/source': 0.02638644679941073, 'battery1/source': 0.20104072613220547, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.1978448890367343, 'heatingcontrol1/source': 2.3760870598298723e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 11.585562895024474
+
+EXPERIMENT 20/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: PERFECT_LFU
+   * desc -> DS2OS topology, LCE placement strategy, PERFECT_LFU replacement, 0.005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.35821888513995154
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.05680036116523309, 'agent2': 0.06246732880292734, 'agent1': 0.04955329563275199, 'agent3': 0.04948201302095709, 'agent6': 0.08663213420139713, 'agent5': 0.05328375231668488})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0007365869885472603, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.0008435109062396046, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.0014256522358979233, 'movement5/source': 0.0005821413296583187, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026481490281803924, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.026469609846504778, 'tempin5/source': 0.026255762011120086, 'tempin6/source': 0.02638644679941073, 'battery1/source': 0.1924986931521171, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.18971867129211614, 'heatingcontrol1/source': 1.1880435299149362e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 11.327900014256523
+
+EXPERIMENT 21/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00018
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.00018 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.08887753647293636
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.010846837428123366, 'agent2': 0.010609228722140379, 'agent1': 0.02770517511761631, 'agent3': 0.02378463146889702, 'agent6': 0.009587511286413533, 'agent5': 0.0063441524497457585})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.03865893646343202, 'movement1/source': 0.021693674856246733, 'movement4/source': 0.03840944732214988, 'movement3/source': 0.025436011975478783, 'movement6/source': 0.03964501259326142, 'movement5/source': 0.04291213230052749, 'tempin1/source': 0.026291403317017535, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026457729411205628, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026338925058214134, 'battery1/source': 0.2229482488238369, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2202751508815283, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 14.075226916314215
+
+EXPERIMENT 22/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00035
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.00035 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.17609181200399182
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.031708881813429644, 'agent2': 0.029249631706505727, 'agent1': 0.038338164710354984, 'agent3': 0.031625718766335596, 'agent6': 0.024057881480777456, 'agent5': 0.021111533526588414})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.020161098702656467, 'movement1/source': 0.011167609181200399, 'movement4/source': 0.017571163807441906, 'movement3/source': 0.01763056598393765, 'movement6/source': 0.025400370669581333, 'movement5/source': 0.02826355557667633, 'tempin1/source': 0.02618447939932519, 'tempin2/source': 0.02636268592881243, 'tempin3/source': 0.02642208810530818, 'tempin4/source': 0.02643396854060733, 'tempin5/source': 0.02622012070522264, 'tempin6/source': 0.026255762011120086, 'battery1/source': 0.222876966212042, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.22009694435204105, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 13.3757068859003
+
+EXPERIMENT 23/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.0005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.1656607898113387
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.03192272964881433, 'agent2': 0.010823076557525067, 'agent1': 0.04951765432685454, 'agent3': 0.04255571924155301, 'agent6': 0.024271729316162144, 'agent5': 0.006569880720429596})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.03865893646343202, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.017571163807441906, 'movement3/source': 0.006748087249916837, 'movement6/source': 0.025400370669581333, 'movement5/source': 0.04291213230052749, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.02637456636411158, 'tempin4/source': 0.02643396854060733, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026255762011120086, 'battery1/source': 0.2224373901059735, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.21977617259896404, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 13.454117758874686
+
+EXPERIMENT 24/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0007
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.0007 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.13216984270303664
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.011262652663593595, 'agent2': 0.011036924392909757, 'agent1': 0.04951765432685454, 'agent3': 0.042627001853347904, 'agent6': 0.010027087392482061, 'agent5': 0.007698522073848786})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.03865893646343202, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.03840944732214988, 'movement3/source': 0.006748087249916837, 'movement6/source': 0.03964501259326142, 'movement5/source': 0.04206862139428789, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026303283752316685, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026338925058214134, 'battery1/source': 0.22204533574110155, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2193841182340921, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 13.718528726892554
+
+EXPERIMENT 25/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.001
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.001 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.1916076605046809
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.01151214180487573, 'agent2': 0.02991493608325809, 'agent1': 0.04951765432685454, 'agent3': 0.04932756736206815, 'agent6': 0.029320914318300622, 'agent5': 0.022014446609323765})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.020161098702656467, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.03840944732214988, 'movement3/source': 0.0003564130589744808, 'movement6/source': 0.025400370669581333, 'movement5/source': 0.02804970774129164, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02636268592881243, 'tempin3/source': 0.025994392434538802, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02622012070522264, 'tempin6/source': 0.026255762011120086, 'battery1/source': 0.22153447702323814, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.21896830299862188, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 13.199686356508103
+
+EXPERIMENT 26/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.002
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.002 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.20110012830870122
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.03306325143753267, 'agent2': 0.030615881765907904, 'agent1': 0.04951765432685454, 'agent3': 0.04948201302095709, 'agent6': 0.015729696336073754, 'agent5': 0.02269163142137528})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.020161098702656467, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.017571163807441906, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.03964501259326142, 'movement5/source': 0.02804970774129164, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02636268592881243, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02643396854060733, 'tempin5/source': 0.02622012070522264, 'tempin6/source': 0.026338925058214134, 'battery1/source': 0.22023950957563085, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2174594877156299, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 13.10654374376277
+
+EXPERIMENT 27/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: IN_CACHE_LFU
+   * desc -> DS2OS topology, LCE placement strategy, IN_CACHE_LFU replacement, 0.005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.21611699852682603
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.036912512474457065, 'agent2': 0.033811718861379084, 'agent1': 0.04955329563275199, 'agent3': 0.04948201302095709, 'agent6': 0.019436392149408354, 'agent5': 0.026921066387872453})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.01967400085539134, 'movement1/source': 0.00022572827068383786, 'movement4/source': 0.016442522454022716, 'movement3/source': 0.00034453262367533147, 'movement6/source': 0.03864705602813287, 'movement5/source': 0.026517131587701373, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02636268592881243, 'tempin3/source': 0.02585182721094901, 'tempin4/source': 0.02643396854060733, 'tempin5/source': 0.02622012070522264, 'tempin6/source': 0.026338925058214134, 'battery1/source': 0.21482203107921874, 'battery3/source': 0.09791854773558903, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2120420092192178, 'heatingcontrol1/source': 1.1880435299149362e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 2.3760870598298723e-05})
+    LATENCY
+     * MEAN: 12.920971344390058
+
+EXPERIMENT 28/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00018
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.00018 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.04728413249061446
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0003088913177778834, 'agent2': 0.000297010882478734, 'agent1': 0.02309556622154636, 'agent3': 0.022976761868554865, 'agent6': 0.00026136957658128593, 'agent5': 0.00034453262367533147})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.048947393432495365, 'movement1/source': 0.026350805493513284, 'movement4/source': 0.048947393432495365, 'movement3/source': 0.02624388157582094, 'movement6/source': 0.048971154303093664, 'movement5/source': 0.048911752126597915, 'tempin1/source': 0.02624388157582094, 'tempin2/source': 0.026493370717103074, 'tempin3/source': 0.026457729411205628, 'tempin4/source': 0.026457729411205628, 'tempin5/source': 0.02624388157582094, 'tempin6/source': 0.026338925058214134, 'battery1/source': 0.2229720096944352, 'battery3/source': 0.10273012403174453, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.2202751508815283, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 14.408164235137576
+
+EXPERIMENT 29/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.00035
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.00035 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.21339637884332083
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0278715012118044, 'agent2': 0.03101981656607898, 'agent1': 0.048757306467708976, 'agent3': 0.047806871643777026, 'agent6': 0.03128118614266027, 'agent5': 0.026659696811291166})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.03515420805018296, 'movement1/source': 0.0009504348239319488, 'movement4/source': 0.03227914270778881, 'movement3/source': 0.00167514137718006, 'movement6/source': 0.038112436439671146, 'movement5/source': 0.03100793613077983, 'tempin1/source': 0.025982511999239653, 'tempin2/source': 0.026350805493513284, 'tempin3/source': 0.02619635983462434, 'tempin4/source': 0.02636268592881243, 'tempin5/source': 0.026065675046333697, 'tempin6/source': 0.02616071852872689, 'battery1/source': 0.19480349760015206, 'battery3/source': 0.10271824359644538, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.19265313881100604, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 12.6620253766098
+
+EXPERIMENT 30/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.0005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.324692296725752
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.0426745235945445, 'agent2': 0.050955186998051606, 'agent1': 0.048983034738392814, 'agent3': 0.04806824122035831, 'agent6': 0.09164567789763817, 'agent5': 0.042365632276766624})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.014102076700090291, 'movement1/source': 0.0007603478591455591, 'movement4/source': 0.01284275055838046, 'movement3/source': 0.001449413106496222, 'movement6/source': 0.017963218172313833, 'movement5/source': 0.010751793945730172, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.02617259896402604, 'tempin3/source': 0.02616071852872689, 'tempin4/source': 0.02622012070522264, 'tempin5/source': 0.02582806634035071, 'tempin6/source': 0.025934990258043054, 'battery1/source': 0.18072518177066008, 'battery3/source': 0.10245687401986409, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17786199686356507, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 11.322292448795324
+
+EXPERIMENT 31/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.0007
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.0007 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.36411158104832964
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.045466425889844606, 'agent2': 0.050955186998051606, 'agent1': 0.0492681651855724, 'agent3': 0.0483771325381362, 'agent6': 0.12428123366440147, 'agent5': 0.045763436772323335})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.005904576343677232, 'movement1/source': 0.0004752174119659744, 'movement4/source': 0.006581761155728746, 'movement3/source': 0.0012355652711115335, 'movement6/source': 0.00687877203820748, 'movement5/source': 0.005084826308035926, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.026065675046333697, 'tempin3/source': 0.026065675046333697, 'tempin4/source': 0.026065675046333697, 'tempin5/source': 0.02585182721094901, 'tempin6/source': 0.02582806634035071, 'battery1/source': 0.17746994249869316, 'battery3/source': 0.1013519935370432, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17495129021527348, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.834956992824218
+
+EXPERIMENT 32/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.001
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.001 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.37757211424226583
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04703464334933232, 'agent2': 0.05049185002138478, 'agent1': 0.0492681651855724, 'agent3': 0.04851969776172599, 'agent6': 0.13519935370431974, 'agent5': 0.04705840421993062})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0034690871073516133, 'movement1/source': 0.0004752174119659744, 'movement4/source': 0.0035403697191465095, 'movement3/source': 0.001093000047521741, 'movement6/source': 0.0037660979898303474, 'movement5/source': 0.002863184907094996, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.025946870693342203, 'tempin3/source': 0.026065675046333697, 'tempin4/source': 0.025970631563940503, 'tempin5/source': 0.02581618590505156, 'tempin6/source': 0.025792425034453264, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09979565651285463, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.1746186380268973, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.670674333507579
+
+EXPERIMENT 33/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.002
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.002 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.38595970156346526
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.04810388252625576, 'agent2': 0.049921589127025615, 'agent1': 0.04939884997386304, 'agent3': 0.048947393432495365, 'agent6': 0.14138906049517655, 'agent5': 0.04819892600864896})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.0017107826830775079, 'movement1/source': 0.00034453262367533147, 'movement4/source': 0.002007793565556242, 'movement3/source': 0.0007959891650430071, 'movement6/source': 0.0019365109537613457, 'movement5/source': 0.0015682174594877157, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.025899348952145608, 'tempin3/source': 0.025934990258043054, 'tempin4/source': 0.025958751128641353, 'tempin5/source': 0.025768664163854964, 'tempin6/source': 0.025768664163854964, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09857197167704225, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 3.5641305897448085e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.577341633797463
+
+EXPERIMENT 34/34:
+  CONFIGURATION:
+   * topology -> name: DS2OS
+   * workload -> name: DS2OS, reqs_file: /Users/danielmeint/experiments/trace/subTrace2.csv, contents_file: /Users/danielmeint/experiments/trace/contents.txt
+   * cache_placement -> name: UNIFORM, network_cache: 0.005
+   * content_placement -> name: DS2OS
+   * strategy -> name: LCE
+   * cache_policy -> name: RAND
+   * desc -> DS2OS topology, LCE placement strategy, RAND replacement, 0.005 network cache
+  RESULTS:
+    CACHE_HIT_RATIO
+     * MEAN: 0.39078315829491994
+     * PER_NODE_CACHE_HIT_RATIO: Tree({'agent4': 0.048947393432495365, 'agent2': 0.04954141519745284, 'agent1': 0.04950577389155539, 'agent3': 0.0492681651855724, 'agent6': 0.14454925628475027, 'agent5': 0.048971154303093664})
+     * PER_NODE_SERVER_HIT_RATIO: Tree({'movement2/source': 0.000724706553248111, 'movement1/source': 0.0002494891412821366, 'movement4/source': 0.0009029130827353514, 'movement3/source': 0.0005108587178634226, 'movement6/source': 0.0009741956945302476, 'movement5/source': 0.0007484674238464097, 'tempin1/source': 0.025946870693342203, 'tempin2/source': 0.025899348952145608, 'tempin3/source': 0.025899348952145608, 'tempin4/source': 0.025946870693342203, 'tempin5/source': 0.025780544599154114, 'tempin6/source': 0.025756783728555815, 'battery1/source': 0.17713729031031697, 'battery3/source': 0.09806111295917883, 'doorlock1/source': 1.1880435299149362e-05, 'battery2/source': 0.17455923585040156, 'heatingcontrol1/source': 2.3760870598298723e-05, 'lightcontrol5/source': 1.1880435299149362e-05, 'lightcontrol4/source': 1.1880435299149362e-05, 'lightcontrol3/source': 1.1880435299149362e-05, 'lightcontrol2/source': 1.1880435299149362e-05, 'washingmachine1/source': 3.5641305897448085e-05})
+    LATENCY
+     * MEAN: 10.526445848975907
+
+
