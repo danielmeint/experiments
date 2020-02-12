@@ -55,6 +55,7 @@ PLOT_EMPTY_GRAPHS = True
 POLICY_STYLE = {
     'NULL':             'k:',
     'MIN':              'k-o',
+    'FIFO':             'b-p',
     'LRU':              'g-1',
     'SLRU':             'y-s',
     'PERFECT_LFU':      'r-2',
@@ -77,6 +78,7 @@ POLICY_STYLE = {
 POLICY_LEGEND = {
     'NULL':             'No Caching',
     'MIN':              'Belady\'s MIN',
+    'FIFO':             'FIFO',
     'LRU':              'LRU',
     'SLRU':             'SLRU',
     'PERFECT_LFU':      'Perfect LFU',

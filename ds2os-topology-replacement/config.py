@@ -20,18 +20,24 @@ def read_csv(path):
 
 # needed for MIN policy
 TRACE = []
-count = 0
-for request in read_csv(TRACE_PATH):
+complete_trace = read_csv(TRACE_PATH) # also contains writes
+
+for request in complete_trace:
+    # skip writes
+    if request['operation'] != 'read':
+        continue
     address = request['accessedNodeAddress']
     version = request['version']
     entry   = f'{address}/v{version}'
-    if entry == '/agent4/movement4/movement/v0':
-        count += 1
     TRACE.append(entry)
-# TRACE = [f'{request['accessedNodeAddress']}/v{request['version']}' for request in read_csv(TRACE_PATH)]
 
-print(len(TRACE))
-print(count)
+# req_times = []
+# for i, k in enumerate(TRACE):
+#     if k == '/agent4/movement4/movement/v0':
+#         req_times.append(i)
+
+# print(req_times)
+# print(len(req_times))
 
 # GENERAL SETTINGS
 
@@ -94,14 +100,16 @@ default['strategy']['name'] = 'LCE'
 
 # Cache replacement policies
 REPLACEMENT_POLICIES = [
-    # 'MIN',
+    # 'MIN', # think this might not work when capacity == 1 at every cache
     'NULL',
+    'FIFO',
     'LRU',
     'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
     'PERFECT_LFU',
     'IN_CACHE_LFU',
     # 'IN_CACHE_LFU_EVICT_FIRST',
     'RAND',
+    # 'MDMR', problematic because many producers only offer one content chunk address // could extend to location, i.e. replace data from garage for data from garage etc.
 ]
 
 # problem: we register 'TTL' and pass 'cache' and 'f_time' as arguments, however, the NetworkModel init assumes for every node a cache_size[node] as maxlen parameter, e.g. LruCache(10)
@@ -112,7 +120,10 @@ for policy in REPLACEMENT_POLICIES:
         experiment = copy.deepcopy(default)
         experiment['cache_policy']['name'] = policy
         if policy == 'MIN':
-            experiment['cache_policy']['trace'] = TRACE
+            if network_cache > 0.001:
+                experiment['cache_policy']['trace'] = TRACE
+            else:
+                continue
         experiment['cache_placement']['network_cache'] = network_cache
         experiment['desc'] = f'DS2OS topology, LCE placement strategy, {policy} replacement, {network_cache} network cache'
         # segments must be an integer and 0 < segments <= maxlen
