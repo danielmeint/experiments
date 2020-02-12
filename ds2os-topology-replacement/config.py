@@ -104,6 +104,7 @@ REPLACEMENT_POLICIES = [
     'NULL',
     'FIFO',
     'LRU',
+    'MDMR',
     'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
     'PERFECT_LFU',
     'IN_CACHE_LFU',
