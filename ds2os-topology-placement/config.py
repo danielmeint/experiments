@@ -13,7 +13,7 @@ LOG_LEVEL = 'INFO'
 
 # If True, executes simulations in parallel using multiple processes
 # to take advantage of multicore CPUs
-PARALLEL_EXECUTION = False
+PARALLEL_EXECUTION = True
 
 # Number of processes used to run simulations in parallel.
 # This option is ignored if PARALLEL_EXECUTION = False
@@ -52,7 +52,16 @@ default['workload'] = {
         }
 
 # mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
-NETWORK_CACHE = [0.00018, 0.00035, 0.0005, 0.0007, 0.001, 0.002, 0.005]
+NETWORK_CACHE = [
+    0.00018, # 6 objects
+    0.00035, # 12 objects
+    # 0.0005, # 17 objects
+    0.00053, # 18 objects
+    0.0007, # 24 objects
+    0.00105, # 36 objects
+    0.00209, # 72 objects
+    0.00523 # 180 objects
+]
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'

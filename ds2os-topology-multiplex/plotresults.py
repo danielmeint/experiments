@@ -189,8 +189,9 @@ def run_tables(config, results, plotdir):
         # print(strategy, policy, cache_size, results[strategy][policy][cache_size])
     
     # no slru for smallest cache size
-    arr = [[''] + policies] + [[strategy] + [round(results[strategy][policy][0.002]['cache_hit_ratio'] * 100, 2) for policy in policies] for strategy in strategies]
-    print(arr_to_latex_table_rows(arr))
+    for cache_size in cache_sizes:
+        arr = [[''] + policies] + [[strategy] + [round(results[strategy][policy][cache_size]['cache_hit_ratio'] * 100, 2) for policy in policies] for strategy in strategies]
+        print(arr_to_latex_table_rows(arr))
 
 def arr_to_latex_table_rows(arr):
     return " \\\\\n".join([" & ".join(map(str,line)) for line in arr])

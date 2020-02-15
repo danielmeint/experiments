@@ -79,16 +79,15 @@ def run_ds2os(config, results, plotdir):
     ds2os_plot_latency_vs_cache_size(
         resultset, topology, cache_sizes, strategies, plotdir)
     ds2os_plot_cache_hits_vs_cache_size(
-        resultset, topology, cache_sizes, strategies, plotdir) # removes NO_CACHE from strategies
+        resultset, topology, cache_sizes, strategies, plotdir)
     logger.info('Exit. Plots were saved in directory %s' %
                 os.path.abspath(plotdir))
 
 
 def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, strategies, plotdir):
     desc = {}
-    if 'NO_CACHE' in strategies:
-        strategies.remove('NO_CACHE') # is passed by reference so removes globally
     # desc['title'] = f'Cache hit ratio: T={topology}'
+    strategies = [strategy for strategy in strategies if strategy != 'NO_CACHE']
     desc['xlabel'] = 'Cache to population ratio'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
