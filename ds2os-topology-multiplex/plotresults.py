@@ -190,6 +190,7 @@ def run_tables(config, results, plotdir):
     
     # no slru for smallest cache size
     for cache_size in cache_sizes:
+        print(cache_size)
         arr = [[''] + policies] + [[strategy] + [round(results[strategy][policy][cache_size]['cache_hit_ratio'] * 100, 2) for policy in policies] for strategy in strategies]
         print(arr_to_latex_table_rows(arr))
 
