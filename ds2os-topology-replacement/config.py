@@ -10,26 +10,26 @@ import csv
 TRACE_PATH    = '/Users/danielmeint/experiments/trace/subTrace2.csv'
 CONTENTS_PATH = '/Users/danielmeint/experiments/trace/contents.txt'
 
-def read_csv(path):
-    res = []
-    with open(path) as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            res.append(row)
-    return res
+# def read_csv(path):
+#     res = []
+#     with open(path) as file:
+#         reader = csv.DictReader(file)
+#         for row in reader:
+#             res.append(row)
+#     return res
 
-# needed for MIN policy
-TRACE = []
-complete_trace = read_csv(TRACE_PATH) # also contains writes
+# # needed for MIN policy
+# TRACE = []
+# complete_trace = read_csv(TRACE_PATH) # also contains writes
 
-for request in complete_trace:
-    # skip writes
-    if request['operation'] != 'read':
-        continue
-    address = request['accessedNodeAddress']
-    version = request['version']
-    entry   = f'{address}/v{version}'
-    TRACE.append(entry)
+# for request in complete_trace:
+#     # skip writes
+#     if request['operation'] != 'read':
+#         continue
+#     address = request['accessedNodeAddress']
+#     version = request['version']
+#     entry   = f'{address}/v{version}'
+#     TRACE.append(entry)
 
 # req_times = []
 # for i, k in enumerate(TRACE):
@@ -47,7 +47,7 @@ LOG_LEVEL = 'INFO'
 
 # If True, executes simulations in parallel using multiple processes
 # to take advantage of multicore CPUs
-PARALLEL_EXECUTION = False
+PARALLEL_EXECUTION = True
 
 # Number of processes used to run simulations in parallel.
 # This option is ignored if PARALLEL_EXECUTION = False

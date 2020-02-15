@@ -113,7 +113,7 @@ def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, p
     # if 'NO_CACHE' in strategies:
     #     strategies.remove('NO_CACHE') # is passed by reference so removes globally
     # desc['title'] = f'Cache hit ratio: T={topology}'
-    policies = [policy for policy in policies if policy not in ['NULL', 'IN_CACHE_LFU_EVICT_FIRST']]
+    policies = [policy for policy in policies if policy != 'NULL']
     desc['xlabel'] = 'Cache to population ratio'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
