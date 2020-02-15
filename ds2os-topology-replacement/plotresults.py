@@ -62,6 +62,7 @@ POLICY_STYLE = {
     'PERFECT_LFU':      'r-2',
     'IN_CACHE_LFU':     'c-3',
     'IN_CACHE_LFU_EVICT_FIRST': 'b-+',
+    'DS2OS_PERFECT_LFU': 'r-x',
     'RAND':             'm-*',
 }
 
@@ -86,6 +87,7 @@ POLICY_LEGEND = {
     'PERFECT_LFU':      'Perfect LFU',
     'IN_CACHE_LFU':     'In-Cache LFU',
     'IN_CACHE_LFU_EVICT_FIRST': 'In-Cache LFU Evict First',
+    'DS2OS_PERFECT_LFU': 'Version-agnostic Perfect LFU',
     'RAND':             'Random',
 }
 

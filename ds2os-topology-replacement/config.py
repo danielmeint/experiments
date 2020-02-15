@@ -86,7 +86,16 @@ default['workload'] = {
         }
 
 # mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
-NETWORK_CACHE = [0.00018, 0.00035, 0.0005, 0.0007, 0.001, 0.002, 0.005]
+NETWORK_CACHE = [
+    0.00018, # 6 objects
+    0.00035, # 12 objects
+    # 0.0005, # 17 objects
+    0.00053, # 18 objects
+    0.0007, # 24 objects
+    0.00105, # 36 objects
+    0.00209, # 72 objects
+    0.00523 # 180 objects
+]
 # NETWORK_CACHE = [0.00035, 0.002]
 
 # Set cache placement
@@ -108,7 +117,8 @@ REPLACEMENT_POLICIES = [
     'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
     'PERFECT_LFU',
     'IN_CACHE_LFU',
-    # 'IN_CACHE_LFU_EVICT_FIRST',
+    # 'DS2OS_PERFECT_LFU',
+    # 'IN_CACHE_LFU_EVICT_FIRST', # performs worse then In-cache LFU
     'RAND',
     # 'MDMR', problematic because many producers only offer one content chunk address // could extend to location, i.e. replace data from garage for data from garage etc.
 ]
@@ -120,11 +130,6 @@ for policy in REPLACEMENT_POLICIES:
     for network_cache in NETWORK_CACHE:
         experiment = copy.deepcopy(default)
         experiment['cache_policy']['name'] = policy
-        if policy == 'MIN':
-            if network_cache > 0.001:
-                experiment['cache_policy']['trace'] = TRACE
-            else:
-                continue
         experiment['cache_placement']['network_cache'] = network_cache
         experiment['desc'] = f'DS2OS topology, LCE placement strategy, {policy} replacement, {network_cache} network cache'
         # segments must be an integer and 0 < segments <= maxlen

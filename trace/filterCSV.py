@@ -223,6 +223,60 @@ def convert(str):
 
 def main():
     print('hello')
+    trace   = read_csv('trace/subTrace2.csv')
+    address = '/agent3/tempin3'
+    read_times  = []
+    write_times = []
+    for r in trace:
+        if r['accessedNodeAddress'] == address:
+            timestamp = r['timestamp']
+            if r['operation'] == 'write':
+                write_times.append(timestamp)
+            elif r['operation'] == 'read':
+                read_times.append(timestamp)
+    print(len(read_times), len(write_times))
+    print(read_times[:10])
+    print(write_times[:10])
+
+
+    # trace     = read_csv('trace/subTrace2.csv')
+    # # new_trace = []
+    # addresses = set([r['accessedNodeAddress'] for r in trace])
+
+    # lastWrite = {
+    #     address : 0
+    #     for address in addresses
+    # }
+    # nextWrite = {
+    #     address : float('inf')
+    #     for address in addresses
+    # }
+
+    # for request in trace:
+    #     address = request['accessedNodeAddress']
+    #     operation = request['operation']
+    #     timestamp = request['timestamp']
+    #     if operation == 'write':
+    #         lastWrite[address] = timestamp
+    #     request['lastWrite'] = lastWrite[address]
+    #     # new_trace.append(request)
+
+    # for request in reversed(trace):
+    #     address   = request['accessedNodeAddress']
+    #     operation = request['operation']
+    #     timestamp = request['timestamp']
+    #     if operation == 'write':
+    #         nextWrite[address] = timestamp
+    #     request['nextWrite'] = nextWrite[address]
+
+    # write_dict_array_to_csv('trace/subTraceWriteTimes.csv', trace)
+
+
+
+
+    # print(trace[100:105])
+
+
     # trace = read_csv('trace/subTrace2.csv')
     # objects = set([r['accessedNodeAddress'] for r in trace])
     # print(objects)
