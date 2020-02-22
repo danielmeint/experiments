@@ -221,25 +221,31 @@ def plot_table_latency():
 def convert(str):
     return [float(x.strip()) for x in str.split('&')]
 
+def make_bar_plot_latencies():
+    labels = ['pro-active updates', 'invalidations', 'polling-every-time']
+    y_pos = np.arange(len(labels))
+    latencies = [11.01577721807727, 12.434206149313312, 14.786627382027277]
+
+    plt.bar(y_pos, latencies)
+    plt.xticks(y_pos, labels)
+    plt.ylabel('Latency in milliseconds')
+    plt.show()
+
 def main():
     print('hello')
-    trace   = read_csv('trace/subTrace2.csv')
-    address = '/agent3/tempin3'
-    read_times  = []
-    write_times = []
-    for r in trace:
-        if r['accessedNodeAddress'] == address:
-            timestamp = r['timestamp']
-            if r['operation'] == 'write':
-                write_times.append(timestamp)
-            elif r['operation'] == 'read':
-                read_times.append(timestamp)
-    print(len(read_times), len(write_times))
-    print(read_times[:10])
-    print(write_times[:10])
+    # make_bar_plot_latencies()
 
+    trace     = read_csv('trace/subTrace2.csv')
+    tempin1_updates = [r for r in trace if r['accessedNodeAddress'] == '/agent1/tempin1' and r['operation'] == 'write' and r['normality'] == 'normal']
+    interarrivaltimes = [int(tempin1_updates[i]['timestamp']) - int(tempin1_updates[i-1]['timestamp']) for i in range(1, len(tempin1_updates))]
+    print(len(interarrivaltimes))
 
-    # trace     = read_csv('trace/subTrace2.csv')
+    values, base = np.histogram(interarrivaltimes, bins=40)
+
+    cumulative = np.cumsum(values)
+    plt.plot(base[:-1], cumulative, c='blue')
+    plt.show()
+
     # # new_trace = []
     # addresses = set([r['accessedNodeAddress'] for r in trace])
 
