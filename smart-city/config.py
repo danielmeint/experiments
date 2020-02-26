@@ -209,7 +209,7 @@ LOG_LEVEL = 'INFO'
 
 # If True, executes simulations in parallel using multiple processes
 # to take advantage of multicore CPUs
-PARALLEL_EXECUTION = True
+PARALLEL_EXECUTION = False
 
 # Number of processes used to run simulations in parallel.
 # This option is ignored if PARALLEL_EXECUTION = False
@@ -242,17 +242,17 @@ DATA_COLLECTORS = [
 # Default experiment values, i.e. values shared by all experiments
 
 # Number of content objects
-N_CONTENTS = 3 * 10 ** 5
-# N_CONTENTS = 3 * 10 ** 2
+# N_CONTENTS = 3 * 10 ** 5
+N_CONTENTS = 3 * 10 ** 2
 
 # Number of content requests generated to pre-populate the caches
 # These requests are not logged
-N_WARMUP_REQUESTS = 3 * 10 ** 5
-# N_WARMUP_REQUESTS = 3 * 10 ** 2
+# N_WARMUP_REQUESTS = 3 * 10 ** 5
+N_WARMUP_REQUESTS = 3 * 10 ** 2
 
 # Number of content requests that are measured after warmup
-N_MEASURED_REQUESTS = 6 * 10 ** 5
-# N_MEASURED_REQUESTS = 6 * 10 ** 2
+# N_MEASURED_REQUESTS = 6 * 10 ** 5
+N_MEASURED_REQUESTS = 6 * 10 ** 2
 
 # Number of requests per second (over the whole network)
 REQ_RATE = 1.0
@@ -261,11 +261,11 @@ REQ_RATE = 1.0
 CACHE_POLICY = 'LRU'
 
 # Zipf alpha parameter, remove parameters not needed
-ALPHA = [0, 1.0]
+ALPHA = [0, 0.5, 1.0, 2.0]
 
 # Total size of network cache as a fraction of content population
 # Remove sizes not needed
-NETWORK_CACHE = [0.1]
+NETWORK_CACHE = [0.002, 0.004, 0.05, 0.1, 0.5]
 
 
 # List of topologies tested
@@ -283,8 +283,9 @@ TOPOLOGIES = [
 # The code is located in ./icarus/models/strategy/*.py
 # Remove strategies not needed
 STRATEGIES = [
-    'LCE',             # Leave Copy Everywhere
     'NO_CACHE',        # No caching, shortest-path routing
+    'LCE',             # Leave Copy Everywhere
+    'EDGE',
     'CL4M',            # Cache less for more
     'PROB_CACHE',      # ProbCache
     'LCD',             # Leave Copy Down
