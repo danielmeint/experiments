@@ -209,7 +209,7 @@ LOG_LEVEL = 'INFO'
 
 # If True, executes simulations in parallel using multiple processes
 # to take advantage of multicore CPUs
-PARALLEL_EXECUTION = False
+PARALLEL_EXECUTION = True
 
 # Number of processes used to run simulations in parallel.
 # This option is ignored if PARALLEL_EXECUTION = False
@@ -223,7 +223,7 @@ RESULTS_FORMAT = 'PICKLE'
 # Number of times each experiment is replicated
 # This is necessary for extracting confidence interval of selected metrics
 # N_REPLICATIONS = 5
-N_REPLICATIONS = 1
+N_REPLICATIONS = 3
 
 # List of metrics to be measured in the experiments
 # The implementation of data collectors are located in ./icarus/execution/collectors.py
@@ -251,19 +251,20 @@ N_WARMUP_REQUESTS = 3 * 10 ** 2
 
 # Number of content requests that are measured after warmup
 # N_MEASURED_REQUESTS = 6 * 10 ** 3
-N_MEASURED_REQUESTS = 6 * 10 ** 2
+# N_MEASURED_REQUESTS = 6 * 10 ** 2
+N_MEASURED_REQUESTS = 6 * 10 ** 4
 
 # Number of requests per second (over the whole network)
 REQ_RATE = 1.0
 
 # Zipf alpha parameter, remove parameters not needed
-ALPHA = [0, 0.5, 1.0, 2.0]
+ALPHA = [0, 0.25, 0.5, 0.75, 1.0]
 # ALPHA = [0, 1.0]
 
 # Total size of network cache as a fraction of content population
 # Remove sizes not needed
-NETWORK_CACHE = [0.004, 0.1, 0.5, 1, 5]
-# NETWORK_CACHE = [0.004]
+# NETWORK_CACHE = [0.004, 0.1, 0.5, 1, 5]
+NETWORK_CACHE = [0.2, 0.3, 0.5, 0.6]
 
 # Create experiment
 default = Tree()
@@ -292,10 +293,10 @@ REPLACEMENT_POLICIES = [
     'LRU',
     # 'MDMR',
     'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
-    'PERFECT_LFU',
-    'IN_CACHE_LFU',
+    # 'PERFECT_LFU',
+    # 'IN_CACHE_LFU',
     # 'DS2OS_PERFECT_LFU',
-    # 'IN_CACHE_LFU_EVICT_FIRST', # performs worse then In-cache LFU
+    'IN_CACHE_LFU_EVICT_FIRST', # performs worse then In-cache LFU
     'RAND',
     # 'MDMR', problematic because many producers only offer one content chunk address // could extend to location, i.e. replace data from garage for data from garage etc.
 ]
