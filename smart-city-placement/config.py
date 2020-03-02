@@ -222,7 +222,7 @@ RESULTS_FORMAT = 'PICKLE'
 
 # Number of times each experiment is replicated
 # This is necessary for extracting confidence interval of selected metrics
-N_REPLICATIONS = 5
+N_REPLICATIONS = 3
 # N_REPLICATIONS = 1
 
 # List of metrics to be measured in the experiments
@@ -261,13 +261,13 @@ REQ_RATE = 1.0
 CACHE_POLICY = 'LRU'
 
 # Zipf alpha parameter, remove parameters not needed
-ALPHA = [0, 0.5, 1.0, 2.0]
+ALPHA = [0, 0.25, 0.5, 0.75, 1.0]
 # ALPHA = [0, 1.0]
 
 # Total size of network cache as a fraction of content population
 # Remove sizes not needed
-NETWORK_CACHE = [0.004, 0.05, 0.1, 0.5, 1, 5]
-# NETWORK_CACHE = [0.004]
+# NETWORK_CACHE = [0.004, 0.05, 0.1, 0.5, 1, 5]
+NETWORK_CACHE = [3]
 
 
 # List of topologies tested
@@ -289,7 +289,7 @@ STRATEGIES = [
     'LCE',             # Leave Copy Everywhere
     # 'EDGE',
     'CL4M',            # Cache less for more
-    # 'PROB_CACHE',      # ProbCache
+    'PROB_CACHE',      # ProbCache
     'LCD',             # Leave Copy Down
     # 'RAND_CHOICE',     # Random choice: cache in one random cache on path
     'RAND_BERNOULLI',  # Random Bernoulli: cache randomly in caches on path
