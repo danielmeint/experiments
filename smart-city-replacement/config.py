@@ -246,11 +246,13 @@ N_CONTENTS = 3 * 10 ** 3
 
 # Number of content requests generated to pre-populate the caches
 # These requests are not logged
-N_WARMUP_REQUESTS = 3 * 10 ** 3
+N_WARMUP_REQUESTS = 0
+# N_WARMUP_REQUESTS = 3 * 10 ** 3
 # N_WARMUP_REQUESTS = 3 * 10 ** 2
 
 # Number of content requests that are measured after warmup
-N_MEASURED_REQUESTS = 6 * 10 ** 3
+# N_MEASURED_REQUESTS = 6 * 10 ** 3
+N_MEASURED_REQUESTS = 10 * 10 ** 3
 # N_MEASURED_REQUESTS = 6 * 10 ** 2
 # N_MEASURED_REQUESTS = 6 * 10 ** 4
 
