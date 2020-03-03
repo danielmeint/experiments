@@ -223,7 +223,7 @@ RESULTS_FORMAT = 'PICKLE'
 # Number of times each experiment is replicated
 # This is necessary for extracting confidence interval of selected metrics
 # N_REPLICATIONS = 5
-N_REPLICATIONS = 3
+N_REPLICATIONS = 1
 
 # List of metrics to be measured in the experiments
 # The implementation of data collectors are located in ./icarus/execution/collectors.py
@@ -241,18 +241,18 @@ DATA_COLLECTORS = [
 # Default experiment values, i.e. values shared by all experiments
 
 # Number of content objects
-# N_CONTENTS = 3 * 10 ** 3
-N_CONTENTS = 3 * 10 ** 2
+N_CONTENTS = 3 * 10 ** 3
+# N_CONTENTS = 3 * 10 ** 2
 
 # Number of content requests generated to pre-populate the caches
 # These requests are not logged
-# N_WARMUP_REQUESTS = 3 * 10 ** 3
-N_WARMUP_REQUESTS = 3 * 10 ** 2
+N_WARMUP_REQUESTS = 3 * 10 ** 3
+# N_WARMUP_REQUESTS = 3 * 10 ** 2
 
 # Number of content requests that are measured after warmup
-# N_MEASURED_REQUESTS = 6 * 10 ** 3
+N_MEASURED_REQUESTS = 6 * 10 ** 3
 # N_MEASURED_REQUESTS = 6 * 10 ** 2
-N_MEASURED_REQUESTS = 6 * 10 ** 4
+# N_MEASURED_REQUESTS = 6 * 10 ** 4
 
 # Number of requests per second (over the whole network)
 REQ_RATE = 1.0
@@ -264,7 +264,8 @@ ALPHA = [0, 0.25, 0.5, 0.75, 1.0]
 # Total size of network cache as a fraction of content population
 # Remove sizes not needed
 # NETWORK_CACHE = [0.004, 0.1, 0.5, 1, 5]
-NETWORK_CACHE = [0.2, 0.3, 0.5, 0.6]
+# NETWORK_CACHE = [0.004, 0.01, 0.04, 0.2, 0.3, 0.5, 0.6]
+NETWORK_CACHE = [0.5, 0.6, 0.7]
 
 # Create experiment
 default = Tree()
