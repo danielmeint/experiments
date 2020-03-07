@@ -231,10 +231,7 @@ def make_bar_plot_latencies():
     plt.ylabel('Latency in milliseconds')
     plt.show()
 
-def main():
-    print('hello')
-    # make_bar_plot_latencies()
-
+def make_cumulative():
     trace     = read_csv('trace/subTrace2.csv')
     tempin1_updates = [r for r in trace if r['accessedNodeAddress'] == '/agent1/tempin1' and r['operation'] == 'write' and r['normality'] == 'normal']
     interarrivaltimes = [int(tempin1_updates[i]['timestamp']) - int(tempin1_updates[i-1]['timestamp']) for i in range(1, len(tempin1_updates))]
@@ -245,6 +242,23 @@ def main():
     cumulative = np.cumsum(values)
     plt.plot(base[:-1], cumulative, c='blue')
     plt.show()
+
+def write_list_to_txt(path, itemlist):
+    with open(path, 'w') as outfile:
+        outfile.write('\n'.join(itemlist))
+
+def main():
+    print('hello')
+    trace = read_csv('trace/subTraceWriteTimes.csv')
+    contents = set([f"{r['accessedNodeAddress']}/{r['lastWrite']}/{r['nextWrite']}" for r in trace if r['operation'] == 'read'])
+    write_list_to_txt('trace/contentsWriteTimes.txt', contents)
+    # print(len(contents))
+
+
+
+    # make_bar_plot_latencies()
+
+
 
     # # new_trace = []
     # addresses = set([r['accessedNodeAddress'] for r in trace])
@@ -338,8 +352,6 @@ def main():
     # plt.xticks([1], [sensor])
 
     # plt.show()
-
-
 
 if __name__ == "__main__":
     main()
