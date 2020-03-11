@@ -129,6 +129,6 @@ for policy in REPLACEMENT_POLICIES:
         experiment['desc'] = f'DS2OS topology, LCE placement strategy, {policy} replacement, {network_cache} network cache'
         # segments must be an integer and 0 < segments <= maxlen
         # alternatively manually set segments = 1; default is 2
-        if policy == 'SLRU' and network_cache == 0.00018:
+        if policy == 'SLRU' and network_cache * TOTAL_OBJECTS <= 6: # 6 KAs in the network
             experiment['cache_policy']['segments'] = 1
         EXPERIMENT_QUEUE.append(experiment)
