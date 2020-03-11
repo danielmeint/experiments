@@ -121,7 +121,7 @@ def plot_cache_hits_vs_alpha(resultset, topology, cache_size, alpha_range, strat
     if 'NO_CACHE' in strategies:
         strategies.remove('NO_CACHE')
     desc = {}
-    desc['title'] = 'Cache hit ratio: T=%s C=%s' % (topology, cache_size)
+    # desc['title'] = 'Cache hit ratio: T=%s C=%s' % (topology, cache_size)
     desc['ylabel'] = 'Cache hit ratio'
     desc['xlabel'] = u'Content distribution \u03b1'
     desc['xparam'] = ('workload', 'alpha')
@@ -144,8 +144,8 @@ def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, 
     desc = {}
     if 'NO_CACHE' in strategies:
         strategies.remove('NO_CACHE')
-    desc['title'] = 'Cache hit ratio: T=%s A=%s' % (topology, alpha)
-    desc['xlabel'] = u'Cache to population ratio'
+    # desc['title'] = 'Cache hit ratio: T=%s A=%s' % (topology, alpha)
+    desc['xlabel'] = 'Cache to population ratio'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
@@ -209,7 +209,7 @@ def plot_link_load_vs_cache_size(resultset, topology, alpha, cache_size_range, s
 
 def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategies, plotdir):
     desc = {}
-    desc['title'] = 'Latency: T=%s C=%s' % (topology, cache_size)
+    # desc['title'] = 'Latency: T=%s C=%s' % (topology, cache_size)
     desc['xlabel'] = u'Content distribution \u03b1'
     desc['ylabel'] = 'Latency (ms)'
     desc['xparam'] = ('workload', 'alpha')
@@ -230,7 +230,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategi
 
 def plot_latency_vs_cache_size(resultset, topology, alpha, cache_size_range, strategies, plotdir):
     desc = {}
-    desc['title'] = 'Latency: T=%s A=%s' % (topology, alpha)
+    # desc['title'] = 'Latency: T=%s A=%s' % (topology, alpha)
     desc['xlabel'] = 'Cache to population ratio'
     desc['ylabel'] = 'Latency'
     desc['xscale'] = 'log'
@@ -262,7 +262,7 @@ def plot_cache_hits_vs_topology(resultset, alpha, cache_size, topology_range, st
     if 'NO_CACHE' in strategies:
         strategies.remove('NO_CACHE')
     desc = {}
-    desc['title'] = 'Cache hit ratio: A=%s C=%s' % (alpha, cache_size)
+    # desc['title'] = 'Cache hit ratio: A=%s C=%s' % (alpha, cache_size)
     desc['ylabel'] = 'Cache hit ratio'
     desc['xparam'] = ('topology', 'name')
     desc['xvals'] = topology_range

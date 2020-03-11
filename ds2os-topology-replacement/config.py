@@ -81,21 +81,16 @@ default['topology']['name'] = 'DS2OS'
 # Set workload
 default['workload'] = {
          'name':            'DS2OS',
-         'reqs_file':       TRACE_PATH,
-         'contents_file':   CONTENTS_PATH
+         'reqs_file':       '/Users/danielmeint/experiments/trace/subTraceWriteTimes.csv',
+         'contents_file':   '/Users/danielmeint/experiments/trace/contentsWriteTimes.txt'
         }
 
 # mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
-NETWORK_CACHE = [
-    0.00018, # 6 objects
-    0.00035, # 12 objects
-    # 0.0005, # 17 objects
-    0.00053, # 18 objects
-    0.0007, # 24 objects
-    0.00105, # 36 objects
-    0.00209, # 72 objects
-    0.00523 # 180 objects
-]
+TOTAL_OBJECTS = 56595
+
+CACHE_SIZES = [6, 12, 18, 24, 36, 72, 180]
+
+NETWORK_CACHE = [size/TOTAL_OBJECTS for size in CACHE_SIZES]
 # NETWORK_CACHE = [0.00035, 0.002]
 
 # Set cache placement

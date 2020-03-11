@@ -114,11 +114,12 @@ def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, p
     #     strategies.remove('NO_CACHE') # is passed by reference so removes globally
     # desc['title'] = f'Cache hit ratio: T={topology}'
     policies = [policy for policy in policies if policy != 'NULL']
-    desc['xlabel'] = 'Cache to population ratio'
+    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(policies)
@@ -135,11 +136,12 @@ def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, p
 def ds2os_plot_latency_vs_cache_size(resultset, topology, cache_size_range, policies, plotdir):
     desc = {}
     # desc['title'] = f'Latency: T={topology}'
-    desc['xlabel'] = 'Cache to population ratio'
-    desc['ylabel'] = 'Latency'
+    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
+    desc['ylabel'] = 'Latency in ms'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(policies)

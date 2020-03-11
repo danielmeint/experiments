@@ -13,7 +13,7 @@ LOG_LEVEL = 'INFO'
 
 # If True, executes simulations in parallel using multiple processes
 # to take advantage of multicore CPUs
-PARALLEL_EXECUTION = True
+PARALLEL_EXECUTION = False
 
 # Number of processes used to run simulations in parallel.
 # This option is ignored if PARALLEL_EXECUTION = False
@@ -47,21 +47,17 @@ default['topology']['name'] = 'DS2OS'
 # Set workload
 default['workload'] = {
          'name':            'DS2OS',
-         'reqs_file':       '/Users/danielmeint/experiments/trace/subTrace2.csv',
-         'contents_file':   '/Users/danielmeint/experiments/trace/contents.txt'
+         'reqs_file':       '/Users/danielmeint/experiments/trace/subTraceWriteTimes.csv',
+         'contents_file':   '/Users/danielmeint/experiments/trace/contentsWriteTimes.txt'
         }
 
 # mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
-NETWORK_CACHE = [
-    0.00018, # 6 objects
-    0.00035, # 12 objects
-    # 0.0005, # 17 objects
-    0.00053, # 18 objects
-    0.0007, # 24 objects
-    0.00105, # 36 objects
-    0.00209, # 72 objects
-    0.00523 # 180 objects
-]
+# warum 56595 objekte in contentWriteTimes
+TOTAL_OBJECTS = 56595
+
+CACHE_SIZES = [6, 12, 18, 24, 36, 72, 180]
+
+NETWORK_CACHE = [size/TOTAL_OBJECTS for size in CACHE_SIZES]
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'
@@ -79,8 +75,9 @@ STRATEGIES = [
     'LCD',
     'EDGE',
     'CL4M',            # Betweenness Centrality, Cache Less For More
-    'PROB_CACHE',      # ProbCache
     'RAND_BERNOULLI',  # Random Bernoulli: cache randomly in caches on path
+    'PROB_CACHE',      # ProbCache
+    'PCASTING',
 ]
 
 for strategy in STRATEGIES:

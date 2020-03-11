@@ -41,14 +41,27 @@ PLOT_EMPTY_GRAPHS = True
 # Off-path strategies: solid lines
 # On-path strategies: dashed lines
 # No-cache: dotted line
+COLORS = [
+    '#8bc34a',
+    '#009688',
+    '#03a9f4',
+    '#3f51b5',
+    '#9c27b0',
+    '#f44336',
+    '#795548',
+    '#ff9800',
+    '#ffeb3b',
+]
+
 STRATEGY_STYLE = {
     'NO_CACHE':        'k:',
     'LCE':             'b-p',
     'LCD':             'g-1',
     'EDGE':            'y-s',
     'CL4M':            'r-2',
-    'PROB_CACHE':      'c-3',
     'RAND_BERNOULLI':  'm-*',
+    'PROB_CACHE':      'c-3',
+    'PCASTING':        'g-x',
     # 'OPTIMAL':        'k-o'
 }
 
@@ -59,9 +72,11 @@ STRATEGY_LEGEND = {
     'LCD':             'LCD',
     'EDGE':            'Edge',
     'CL4M':            'BTW',
-    'PROB_CACHE':      'ProbCache',
     'RAND_BERNOULLI':  'Prob(0.2)',
+    'PROB_CACHE':      'ProbCache',
+    'PCASTING':        'pCASTING',
 }
+
 
 def run_ds2os(config, results, plotdir):
     settings = Settings()
@@ -72,9 +87,10 @@ def run_ds2os(config, results, plotdir):
         os.makedirs(plotdir)
     topology = 'DS2OS'
     alpha = 1.0  # TODO: calculate real alpha
-    cache_sizes = settings.NETWORK_CACHE
+    print(settings)
+    cache_sizes = settings.NETWORK_CACHE #; pass CACHE_SIZES as xticks
+    print(cache_sizes)
     strategies = settings.STRATEGIES
-    print(cache_sizes, alpha, strategies)
     # plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
     ds2os_plot_latency_vs_cache_size(
         resultset, topology, cache_sizes, strategies, plotdir)
@@ -87,12 +103,14 @@ def run_ds2os(config, results, plotdir):
 def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, strategies, plotdir):
     desc = {}
     # desc['title'] = f'Cache hit ratio: T={topology}'
-    strategies = [strategy for strategy in strategies if strategy != 'NO_CACHE']
-    desc['xlabel'] = 'Cache to population ratio'
+    strategies = [
+        strategy for strategy in strategies if strategy != 'NO_CACHE']
+    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(strategies)
@@ -110,11 +128,12 @@ def ds2os_plot_latency_vs_cache_size(resultset, topology, cache_size_range, stra
     desc = {}
     print('plotting strategies', strategies)
     # desc['title'] = f'Latency: T={topology}'
-    desc['xlabel'] = 'Cache to population ratio'
-    desc['ylabel'] = 'Latency'
+    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
+    desc['ylabel'] = 'Latency in ms'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(strategies)
