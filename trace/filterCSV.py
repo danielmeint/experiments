@@ -250,8 +250,7 @@ def write_list_to_txt(path, itemlist):
 def main():
     print('hello')
     trace = read_csv('trace/subTraceWriteTimes.csv')
-    contents = set([f"{r['accessedNodeAddress']}/{r['lastWrite']}/{r['nextWrite']}" for r in trace])
-    write_list_to_txt('trace/contentsWriteTimes.txt', sorted(contents))
+    print(set([request['sourceAddress'] for request in trace if request['accessedNodeAddress'] == '/agent1/movement1/movement' and request['operation'] == 'read']))
     # print(len(contents))
 
 

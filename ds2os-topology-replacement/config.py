@@ -7,37 +7,8 @@ import icarus.models as cache
 
 import csv
 
-TRACE_PATH    = '/Users/danielmeint/experiments/trace/subTrace2.csv'
-CONTENTS_PATH = '/Users/danielmeint/experiments/trace/contents.txt'
-
-# def read_csv(path):
-#     res = []
-#     with open(path) as file:
-#         reader = csv.DictReader(file)
-#         for row in reader:
-#             res.append(row)
-#     return res
-
-# # needed for MIN policy
-# TRACE = []
-# complete_trace = read_csv(TRACE_PATH) # also contains writes
-
-# for request in complete_trace:
-#     # skip writes
-#     if request['operation'] != 'read':
-#         continue
-#     address = request['accessedNodeAddress']
-#     version = request['version']
-#     entry   = f'{address}/v{version}'
-#     TRACE.append(entry)
-
-# req_times = []
-# for i, k in enumerate(TRACE):
-#     if k == '/agent4/movement4/movement/v0':
-#         req_times.append(i)
-
-# print(req_times)
-# print(len(req_times))
+TRACE_PATH    = '/Users/danielmeint/experiments/trace/subTraceWriteTimes.csv'
+CONTENTS_PATH = '/Users/danielmeint/experiments/trace/contentsWriteTimes.txt'
 
 # GENERAL SETTINGS
 
@@ -81,12 +52,11 @@ default['topology']['name'] = 'DS2OS'
 # Set workload
 default['workload'] = {
          'name':            'DS2OS',
-         'reqs_file':       '/Users/danielmeint/experiments/trace/subTraceWriteTimes.csv',
-         'contents_file':   '/Users/danielmeint/experiments/trace/contentsWriteTimes.txt'
+         'reqs_file':       TRACE_PATH,
+         'contents_file':   CONTENTS_PATH
         }
 
-# mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
-TOTAL_OBJECTS = 56595
+TOTAL_OBJECTS = 56595 # sum(1 for line in open(CONTENTS_PATH))
 
 CACHE_SIZES = [6, 12, 18, 24, 36, 72, 180]
 
@@ -108,14 +78,14 @@ REPLACEMENT_POLICIES = [
     'NULL',
     'FIFO',
     'LRU',
-    'MDMR',
-    'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
     'PERFECT_LFU',
     'IN_CACHE_LFU',
+    'SLRU', # needs at least 2 segments to make sense, i.e. also at least 2 objects in each cache
+    'MDMR', # many producers only offer one content chunk address // could extend to location, i.e. replace data from garage for data from garage etc.
+    'LFF',
     # 'DS2OS_PERFECT_LFU',
     # 'IN_CACHE_LFU_EVICT_FIRST', # performs worse then In-cache LFU
     'RAND',
-    # 'MDMR', problematic because many producers only offer one content chunk address // could extend to location, i.e. replace data from garage for data from garage etc.
 ]
 
 # problem: we register 'TTL' and pass 'cache' and 'f_time' as arguments, however, the NetworkModel init assumes for every node a cache_size[node] as maxlen parameter, e.g. LruCache(10)
