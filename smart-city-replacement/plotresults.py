@@ -112,7 +112,7 @@ def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, 
 def plot_link_load_vs_alpha(resultset, topology, cache_size, alpha_range, policies, plotdir):
     desc = {}
     desc['title'] = 'Internal link load: T=%s C=%s' % (topology, cache_size)
-    desc['xlabel'] = u'Content distribution \u03b1'
+    desc['xlabel'] = 'Content distribution alpha parameter'
     desc['ylabel'] = 'Internal link load'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
