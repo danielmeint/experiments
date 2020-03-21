@@ -16,6 +16,8 @@ import csv
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime
+from collections import Counter
 
 res = []
 agents = set()
@@ -166,24 +168,51 @@ def write_dict_array_to_csv(path, dict_array):
         dict_writer.writerows(dict_array)
 
 def plot_temp_sensor_updates():
-    trace = read_csv('trace/subTrace.csv')
+    trace = read_csv('trace/subTraceWriteTimes.csv')
 
-    sensors = [f'tempin{id}' for id in range(1, 7)]
+    sensors = [f'tempin{id}' for id in range(1, 4)] # range(1, 7) for all
     updates = [
         [
-            request for request in trace if request['srcId'] == sensor and request['op'] == 'write'
+            request for request in trace if request['sourceID'] == sensor and request['operation'] == 'write'
         ] for sensor in sensors
     ]
     interarrivaltimes = [
         [
-            int(row[i]['time']) - int(row[i-1]['time']) for i in range(1, len(row))
+            (int(row[i]['timestamp']) - int(row[i-1]['timestamp']))/1000 for i in range(1, len(row))
         ] for row in updates
     ]
 
     fig, ax = plt.subplots()
     # ax.set_title('Time between updates for temperature sensors in ms')
-    ax.boxplot(interarrivaltimes, showfliers=False)
-    plt.xticks([1, 2, 3, 4, 5, 6], ['tempin1', 'tempin2', 'tempin3', 'tempin4', 'tempin5', 'tempin6'])
+    ax.boxplot(interarrivaltimes, showfliers=False, vert=False)
+    # plt.xticks([1, 2, 3, 4, 5, 6], ['tempin1', 'tempin2', 'tempin3', 'tempin4', 'tempin5', 'tempin6'])
+    plt.yticks([1, 2, 3], ['tempin1', 'tempin2', 'tempin3'])
+    # plt.
+    plt.xlabel('Interarrival Time (sec)')
+    plt.show()
+
+def plot_mov_sensor_updates():
+    trace = read_csv('trace/subTraceWriteTimes.csv')
+
+    sensors = [f'movement{id}' for id in range(1, 4)] # range(1, 7) for all
+    updates = [
+        [
+            request for request in trace if request['sourceID'] == sensor and request['operation'] == 'write' and request['accessedNodeAddress'].endswith('movement')
+        ] for sensor in sensors
+    ]
+    interarrivaltimes = [
+        [
+            (int(row[i]['timestamp']) - int(row[i-1]['timestamp']))/1000/60 for i in range(1, len(row))
+        ] for row in updates
+    ]
+
+    fig, ax = plt.subplots()
+    # ax.set_title('Time between updates for temperature sensors in ms')
+    ax.boxplot(interarrivaltimes, showfliers=True, vert=False)
+    # plt.xticks([1, 2, 3, 4, 5, 6], ['tempin1', 'tempin2', 'tempin3', 'tempin4', 'tempin5', 'tempin6'])
+    plt.yticks([1, 2, 3], [f"movement{id}/movement" for id in range(1, 4)])
+    # plt.
+    plt.xlabel('Interarrival Time (min)')
     plt.show()
 
 def boxplot(data):
@@ -249,8 +278,19 @@ def write_list_to_txt(path, itemlist):
 
 def main():
     print('hello')
-    trace = read_csv('trace/subTraceWriteTimes.csv')
-    print(set([request['sourceAddress'] for request in trace if request['accessedNodeAddress'] == '/agent1/movement1/movement' and request['operation'] == 'read']))
+    plot_mov_sensor_updates()
+
+    # data = []
+    # for temp_id in range(1, 4):
+    #     temp_name = f"tempin{temp_id}"
+    #     write_times = [r['timestamp'] for r in trace if r['sourceID'] == temp_name and r['operation'] == 'write']
+    #     assert len(write_times) > 10
+    #     intervals = [int(write_times[i]) - int(write_times[i-1]) for i in range(1, len(write_times))]
+    #     data.append(intervals)
+    # fig, ax = plt.subplots()
+    # ax.boxplot(data, showfliers=False)
+    # plt.show()
+    # print(set([request['sourceAddress'] for request in trace if request['accessedNodeAddress'] == '/agent1/movement1/movement' and request['operation'] == 'read']))
     # print(len(contents))
 
 
