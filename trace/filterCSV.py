@@ -251,13 +251,13 @@ def convert(str):
     return [float(x.strip()) for x in str.split('&')]
 
 def make_bar_plot_latencies():
-    labels = ['pro-active updates', 'invalidations', 'polling-every-time']
+    labels = ['Pro-active updates', 'Invalidations', 'Polling-every-time']
     y_pos = np.arange(len(labels))
     latencies = [11.01577721807727, 12.434206149313312, 14.786627382027277]
 
     plt.bar(y_pos, latencies)
     plt.xticks(y_pos, labels)
-    plt.ylabel('Latency in milliseconds')
+    plt.ylabel('Latency in ms')
     plt.show()
 
 def make_cumulative():
@@ -278,7 +278,13 @@ def write_list_to_txt(path, itemlist):
 
 def main():
     print('hello')
-    plot_mov_sensor_updates()
+    # plot_mov_sensor_updates()
+    trace = read_csv('trace/subTraceWriteTimes.csv')
+    read_contents = set([r['accessedNodeAddress'] for r in trace if r['operation'] == 'read'])
+    all_contents = set([r['accessedNodeAddress'] for r in trace])
+    # print(read_contents, all_contents)
+    print([c for c in all_contents if c not in read_contents])
+    print(len(read_contents), len(all_contents))
 
     # data = []
     # for temp_id in range(1, 4):
