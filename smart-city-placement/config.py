@@ -224,7 +224,7 @@ RESULTS_FORMAT = 'PICKLE'
 # This is necessary for extracting confidence interval of selected metrics
 # N_REPLICATIONS = 3
 # N_REPLICATIONS = 5
-N_REPLICATIONS = 1
+N_REPLICATIONS = 2
 
 # List of metrics to be measured in the experiments
 # The implementation of data collectors are located in ./icarus/execution/collectors.py
@@ -271,6 +271,8 @@ ALPHA = [0, 0.25, 0.5, 0.75, 1.0]
 NO_CACHING_NODES = 46
 
 CACHE_SIZES = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048] # size of individual cache
+# CACHE_SIZES = [1, 4, 1024, 2048] # size of individual cache
+
 
 NETWORK_CAPACITY = [(size * NO_CACHING_NODES) for size in CACHE_SIZES]
 

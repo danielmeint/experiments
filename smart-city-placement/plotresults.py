@@ -145,11 +145,17 @@ def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, 
     if 'NO_CACHE' in strategies:
         strategies.remove('NO_CACHE')
     # desc['title'] = 'Cache hit ratio: T=%s A=%s' % (topology, alpha)
-    desc['xlabel'] = 'Cache to population ratio'
+    desc['title'] = f'Alpha={alpha}'
+    # desc['xlabel'] = 'Cache to population ratio'
+    desc['xlabel'] = 'Capacity per cache in number of objects'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range # daniel
+    desc['ymin'] = 0
+    desc['ymax'] = 1
+    desc['xticklabels'] = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'STATIONARY', 'alpha': alpha}}
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(strategies)
@@ -350,12 +356,12 @@ def run(config, results, plotdir):
             plot_link_load_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
             logger.info('Plotting latency for topology %s and alpha %s vs cache size' % (topology, str(alpha)))
             plot_latency_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
-    for cache_size in cache_sizes:
-        for alpha in alphas:
-            logger.info('Plotting cache hit ratio for cache size %s vs alpha %s against topologies' % (str(cache_size), str(alpha)))
-            plot_cache_hits_vs_topology(resultset, alpha, cache_size, topologies, strategies, plotdir)
-            logger.info('Plotting link load for cache size %s vs alpha %s against topologies' % (str(cache_size), str(alpha)))
-            plot_link_load_vs_topology(resultset, alpha, cache_size, topologies, strategies, plotdir)
+    # for cache_size in cache_sizes:
+    #     for alpha in alphas:
+    #         logger.info('Plotting cache hit ratio for cache size %s vs alpha %s against topologies' % (str(cache_size), str(alpha)))
+    #         plot_cache_hits_vs_topology(resultset, alpha, cache_size, topologies, strategies, plotdir)
+    #         logger.info('Plotting link load for cache size %s vs alpha %s against topologies' % (str(cache_size), str(alpha)))
+    #         plot_link_load_vs_topology(resultset, alpha, cache_size, topologies, strategies, plotdir)
     logger.info('Exit. Plots were saved in directory %s' % os.path.abspath(plotdir))
 
 

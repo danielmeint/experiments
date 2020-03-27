@@ -246,13 +246,13 @@ N_CONTENTS = 3 * 10 ** 3
 
 # Number of content requests generated to pre-populate the caches
 # These requests are not logged
-N_WARMUP_REQUESTS = 0
-# N_WARMUP_REQUESTS = 3 * 10 ** 3
+# N_WARMUP_REQUESTS = 0
+N_WARMUP_REQUESTS = 3 * 10 ** 3
 # N_WARMUP_REQUESTS = 3 * 10 ** 2
 
 # Number of content requests that are measured after warmup
-# N_MEASURED_REQUESTS = 6 * 10 ** 3
-N_MEASURED_REQUESTS = 10 * 10 ** 3
+N_MEASURED_REQUESTS = 6 * 10 ** 3
+# N_MEASURED_REQUESTS = 10 * 10 ** 3
 # N_MEASURED_REQUESTS = 6 * 10 ** 2
 # N_MEASURED_REQUESTS = 6 * 10 ** 4
 
@@ -267,7 +267,13 @@ ALPHA = [0, 0.25, 0.5, 0.75, 1.0]
 # Remove sizes not needed
 # NETWORK_CACHE = [0.004, 0.1, 0.5, 1, 5]
 # NETWORK_CACHE = [0.004, 0.01, 0.04, 0.2, 0.3, 0.5, 0.6]
-NETWORK_CACHE = [0.5, 0.6, 0.7]
+N_CACHING_NODES = 46
+
+CACHE_SIZES = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048] # size of individual cache
+
+NETWORK_CAPACITY = [(size * N_CACHING_NODES) for size in CACHE_SIZES]
+
+NETWORK_CACHE = [(capacity / N_CONTENTS) for capacity in NETWORK_CAPACITY]
 
 # Create experiment
 default = Tree()
@@ -313,6 +319,6 @@ for alpha in ALPHA:
             experiment['cache_policy']['name'] = policy
             experiment['cache_placement']['network_cache'] = network_cache
             experiment['desc'] = f'Topology: TransitStub, Alpha: {alpha}, LCE placement strategy, {policy} replacement, {network_cache} network cache'
-            if policy == 'SLRU' and network_cache < 0.5:
+            if policy == 'SLRU' and (network_cache * N_CONTENTS) / N_CACHING_NODES < 2:
                 experiment['cache_policy']['segments'] = 1
             EXPERIMENT_QUEUE.append(experiment)
