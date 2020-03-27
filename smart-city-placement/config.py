@@ -209,7 +209,7 @@ LOG_LEVEL = 'INFO'
 
 # If True, executes simulations in parallel using multiple processes
 # to take advantage of multicore CPUs
-PARALLEL_EXECUTION = False
+PARALLEL_EXECUTION = True
 
 # Number of processes used to run simulations in parallel.
 # This option is ignored if PARALLEL_EXECUTION = False
@@ -223,6 +223,7 @@ RESULTS_FORMAT = 'PICKLE'
 # Number of times each experiment is replicated
 # This is necessary for extracting confidence interval of selected metrics
 # N_REPLICATIONS = 3
+# N_REPLICATIONS = 5
 N_REPLICATIONS = 1
 
 # List of metrics to be measured in the experiments
@@ -267,7 +268,13 @@ ALPHA = [0, 0.25, 0.5, 0.75, 1.0]
 # Total size of network cache as a fraction of content population
 # Remove sizes not needed
 # NETWORK_CACHE = [0.004, 0.05, 0.1, 0.5, 1, 5]
-NETWORK_CACHE = [0.2, 0.3]
+NO_CACHING_NODES = 46
+
+CACHE_SIZES = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048] # size of individual cache
+
+NETWORK_CAPACITY = [(size * NO_CACHING_NODES) for size in CACHE_SIZES]
+
+NETWORK_CACHE = [(capacity / N_CONTENTS) for capacity in NETWORK_CAPACITY]
 
 
 # List of topologies tested

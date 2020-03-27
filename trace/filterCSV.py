@@ -280,11 +280,12 @@ def main():
     print('hello')
     # plot_mov_sensor_updates()
     trace = read_csv('trace/subTraceWriteTimes.csv')
-    read_contents = set([r['accessedNodeAddress'] for r in trace if r['operation'] == 'read'])
-    all_contents = set([r['accessedNodeAddress'] for r in trace])
-    # print(read_contents, all_contents)
-    print([c for c in all_contents if c not in read_contents])
-    print(len(read_contents), len(all_contents))
+    print(len([r for r in trace if r['operation'] == 'write' and r['accessedNodeAddress'] == '/agent3/tempin3']))
+    # read_contents = set([r['accessedNodeAddress'] for r in trace if r['operation'] == 'read'])
+    # all_contents = set([r['accessedNodeAddress'] for r in trace])
+    # # print(read_contents, all_contents)
+    # print([c for c in all_contents if c not in read_contents])
+    # print(len(read_contents), len(all_contents))
 
     # data = []
     # for temp_id in range(1, 4):

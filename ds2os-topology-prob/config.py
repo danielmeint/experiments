@@ -55,9 +55,9 @@ default['workload'] = {
 # warum 56595 objekte in contentWriteTimes
 TOTAL_OBJECTS = 56595
 
-CACHE_SIZES = [6, 12, 18, 24, 36, 72, 180]
+NETWORK_CAPACITY = [6, 12, 18, 24, 36, 72, 180]
 
-NETWORK_CACHE = [size/TOTAL_OBJECTS for size in CACHE_SIZES]
+NETWORK_CACHE = [size/TOTAL_OBJECTS for size in NETWORK_CAPACITY]
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'
