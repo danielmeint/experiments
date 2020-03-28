@@ -123,7 +123,7 @@ def plot_cache_hits_vs_alpha(resultset, topology, cache_size, alpha_range, strat
     desc = {}
     # desc['title'] = 'Cache hit ratio: T=%s C=%s' % (topology, cache_size)
     desc['ylabel'] = 'Cache hit ratio'
-    desc['xlabel'] = 'Content distribution alpha parameter'
+    desc['xlabel'] = f"Skewness of the request ditribution (Zipf $\\alpha$ parameter)"
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
     desc['filter'] = {'topology': {'name': topology},
@@ -131,7 +131,7 @@ def plot_cache_hits_vs_alpha(resultset, topology, cache_size, alpha_range, strat
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper left'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
@@ -145,9 +145,9 @@ def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, 
     if 'NO_CACHE' in strategies:
         strategies.remove('NO_CACHE')
     # desc['title'] = 'Cache hit ratio: T=%s A=%s' % (topology, alpha)
-    desc['title'] = f'Alpha={alpha}'
+    desc['title']  = f"$\\alpha$={alpha}"
     # desc['xlabel'] = 'Cache to population ratio'
-    desc['xlabel'] = 'Capacity per cache in number of objects'
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
@@ -161,7 +161,7 @@ def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, 
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper left'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
@@ -182,7 +182,7 @@ def plot_link_load_vs_alpha(resultset, topology, cache_size, alpha_range, strate
     desc['ymetrics'] = [('LINK_LOAD', 'MEAN_INTERNAL')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
@@ -204,7 +204,7 @@ def plot_link_load_vs_cache_size(resultset, topology, alpha, cache_size_range, s
     desc['ymetrics'] = [('LINK_LOAD', 'MEAN_INTERNAL')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
@@ -217,7 +217,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategi
     desc = {}
     # desc['title'] = 'Latency: T=%s C=%s' % (topology, cache_size)
     desc['xlabel'] = 'Content distribution alpha parameter'
-    desc['ylabel'] = 'Latency (ms)'
+    desc['ylabel'] = 'Latency in ms'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
     desc['filter'] = {'topology': {'name': topology},
@@ -225,7 +225,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategi
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
@@ -237,18 +237,23 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategi
 def plot_latency_vs_cache_size(resultset, topology, alpha, cache_size_range, strategies, plotdir):
     desc = {}
     # desc['title'] = 'Latency: T=%s A=%s' % (topology, alpha)
-    desc['xlabel'] = 'Cache to population ratio'
-    desc['ylabel'] = 'Latency'
+    desc['title']  = f"$\\alpha$={alpha}"
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
+    desc['ylabel'] = 'Latency in ms'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range # daniel
+    desc['ymin'] = 100
+    desc['ymax'] = 350
+    desc['xticklabels'] = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'STATIONARY', 'alpha': alpha}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
     desc['metric'] = ('LATENCY', 'MEAN')
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
@@ -277,7 +282,7 @@ def plot_cache_hits_vs_topology(resultset, alpha, cache_size, topology_range, st
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'lower right'
     desc['bar_color'] = STRATEGY_BAR_COLOR
     desc['bar_hatch'] = STRATEGY_BAR_HATCH
@@ -305,7 +310,7 @@ def plot_link_load_vs_topology(resultset, alpha, cache_size, topology_range, str
     desc['ymetrics'] = [('LINK_LOAD', 'MEAN_INTERNAL')] * len(strategies)
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'lower right'
     desc['bar_color'] = STRATEGY_BAR_COLOR
     desc['bar_hatch'] = STRATEGY_BAR_HATCH

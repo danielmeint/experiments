@@ -70,7 +70,7 @@ def plot_cache_hits_vs_alpha(resultset, topology, cache_size, alpha_range, polic
     desc = {}
     # desc['title'] = 'Cache hit ratio: T=%s C=%s' % (topology, cache_size)
     desc['ylabel'] = 'Cache hit ratio'
-    desc['xlabel'] = 'Content distribution alpha parameter'
+    desc['xlabel'] = f"Skewness of the request ditribution (Zipf $\\alpha$ parameter)"
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
     desc['filter'] = {'topology': {'name': topology},
@@ -78,7 +78,7 @@ def plot_cache_hits_vs_alpha(resultset, topology, cache_size, alpha_range, polic
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper left'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
@@ -89,18 +89,24 @@ def plot_cache_hits_vs_alpha(resultset, topology, cache_size, alpha_range, polic
 
 def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, policies, plotdir):
     desc = {}
-    desc['title'] = 'Cache hit ratio: T=%s A=%s' % (topology, alpha)
-    desc['xlabel'] = u'Cache to population ratio'
+    # desc['title'] = 'Cache hit ratio: T=%s A=%s' % (topology, alpha)
+    desc['title']  = f"$\\alpha$={alpha}"
+    # desc['xlabel'] = u'Cache to population ratio'
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range
+    desc['ymin'] = 0
+    desc['ymax'] = 1
+    desc['xticklabels'] = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'STATIONARY', 'alpha': alpha}}
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper left'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
@@ -112,7 +118,7 @@ def plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_size_range, 
 def plot_link_load_vs_alpha(resultset, topology, cache_size, alpha_range, policies, plotdir):
     desc = {}
     desc['title'] = 'Internal link load: T=%s C=%s' % (topology, cache_size)
-    desc['xlabel'] = 'Content distribution alpha parameter'
+    desc['xlabel'] = f"Skewness of the request ditribution (Zipf $\\alpha$ parameter)"
     desc['ylabel'] = 'Internal link load'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
@@ -121,7 +127,7 @@ def plot_link_load_vs_alpha(resultset, topology, cache_size, alpha_range, polici
     desc['ymetrics'] = [('LINK_LOAD', 'MEAN_INTERNAL')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
@@ -143,7 +149,7 @@ def plot_link_load_vs_cache_size(resultset, topology, alpha, cache_size_range, p
     desc['ymetrics'] = [('LINK_LOAD', 'MEAN_INTERNAL')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
@@ -155,8 +161,10 @@ def plot_link_load_vs_cache_size(resultset, topology, alpha, cache_size_range, p
 def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, policies, plotdir):
     desc = {}
     # desc['title'] = 'Latency: T=%s C=%s' % (topology, cache_size)
-    desc['xlabel'] = 'Content distribution alpha parameter'
-    desc['ylabel'] = 'Latency (ms)'
+    # desc['xlabel'] = 'Content distribution alpha parameter'
+    # desc['xlabel'] = f"$\\alpha$ parameter of Zipf distribution"
+    desc['xlabel'] = f"Skewness of the request ditribution (Zipf $\\alpha$ parameter)"
+    desc['ylabel'] = 'Latency in ms'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
     desc['filter'] = {'topology': {'name': topology},
@@ -164,7 +172,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, policies
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
@@ -175,19 +183,24 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, policies
 
 def plot_latency_vs_cache_size(resultset, topology, alpha, cache_size_range, policies, plotdir):
     desc = {}
-    desc['title'] = 'Latency: T=%s A=%s' % (topology, alpha)
-    desc['xlabel'] = 'Cache to population ratio'
-    desc['ylabel'] = 'Latency'
+    # desc['title'] = 'Latency: T=%s A=%s' % (topology, alpha)
+    desc['title']  = f"$\\alpha$={alpha}"
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
+    desc['ylabel'] = 'Latency in ms'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
+    desc['xticks'] = cache_size_range # daniel
+    desc['ymin'] = 100
+    desc['ymax'] = 350
+    desc['xticklabels'] = [1, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'STATIONARY', 'alpha': alpha}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
     desc['metric'] = ('LATENCY', 'MEAN')
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND

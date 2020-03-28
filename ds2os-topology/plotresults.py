@@ -186,7 +186,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategi
     desc = {}
     desc['title'] = 'Latency: T=%s C=%s' % (topology, cache_size)
     desc['xlabel'] = u'Content distribution \u03b1'
-    desc['ylabel'] = 'Latency (ms)'
+    desc['ylabel'] = 'Latency in ms'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
     desc['filter'] = {'topology': {'name': topology},
