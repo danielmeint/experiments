@@ -167,6 +167,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, policies
     desc['ylabel'] = 'Latency in ms'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
+    desc['xticks'] = alpha_range # d
     desc['filter'] = {'topology': {'name': topology},
                       'cache_placement': {'network_cache': cache_size}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(policies)

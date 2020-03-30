@@ -216,10 +216,11 @@ def plot_link_load_vs_cache_size(resultset, topology, alpha, cache_size_range, s
 def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategies, plotdir):
     desc = {}
     # desc['title'] = 'Latency: T=%s C=%s' % (topology, cache_size)
-    desc['xlabel'] = 'Content distribution alpha parameter'
+    desc['xlabel'] = f"Skewness of the request ditribution (Zipf $\\alpha$ parameter)"
     desc['ylabel'] = 'Latency in ms'
     desc['xparam'] = ('workload', 'alpha')
     desc['xvals'] = alpha_range
+    desc['xticks'] = alpha_range # d
     desc['filter'] = {'topology': {'name': topology},
                       'cache_placement': {'network_cache': cache_size}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(strategies)
