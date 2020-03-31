@@ -116,18 +116,19 @@ def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, p
     #     strategies.remove('NO_CACHE') # is passed by reference so removes globally
     # desc['title'] = f'Cache hit ratio: T={topology}'
     policies = [policy for policy in policies if policy != 'NULL']
-    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Cache hit ratio'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
     desc['xticks'] = cache_size_range
+    desc['xticklabels'] = [1, 2, 3, 4, 5, 6, 8, 16]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
     desc['ymetrics'] = [('CACHE_HIT_RATIO', 'MEAN')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'lower right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
@@ -138,19 +139,20 @@ def ds2os_plot_cache_hits_vs_cache_size(resultset, topology, cache_size_range, p
 def ds2os_plot_latency_vs_cache_size(resultset, topology, cache_size_range, policies, plotdir):
     desc = {}
     # desc['title'] = f'Latency: T={topology}'
-    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Latency in ms'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
     desc['xticks'] = cache_size_range
+    desc['xticklabels'] = [1, 2, 3, 4, 5, 6, 8, 16]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
     desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(policies)
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
     desc['metric'] = ('LATENCY', 'MEAN')
-    desc['errorbar'] = True
+    desc['errorbar'] = False
     desc['legend_loc'] = 'upper right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND

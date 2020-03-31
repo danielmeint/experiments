@@ -56,11 +56,14 @@ default['workload'] = {
          'contents_file':   CONTENTS_PATH
         }
 
-TOTAL_OBJECTS = 56595 # sum(1 for line in open(CONTENTS_PATH))
+N_CONTENTS = 56595
+N_CACHES = 6
 
-CACHE_SIZES = [6, 12, 18, 24, 36, 72, 180]
+CACHE_SIZES = [1, 2, 3, 4, 5, 6, 8, 16] # capacity per cache in objects
 
-NETWORK_CACHE = [size/TOTAL_OBJECTS for size in CACHE_SIZES]
+NETWORK_CAPACITY = [(size * N_CACHES) for size in CACHE_SIZES] # total network capacity in objects
+
+NETWORK_CACHE = [(capacity / N_CONTENTS) for capacity in NETWORK_CAPACITY] # total network capacity as fraction of total content objects
 # NETWORK_CACHE = [0.00035, 0.002]
 
 # Set cache placement
@@ -99,6 +102,6 @@ for policy in REPLACEMENT_POLICIES:
         experiment['desc'] = f'DS2OS topology, LCE placement strategy, {policy} replacement, {network_cache} network cache'
         # segments must be an integer and 0 < segments <= maxlen
         # alternatively manually set segments = 1; default is 2
-        if policy == 'SLRU' and network_cache * TOTAL_OBJECTS <= 6: # 6 KAs in the network
+        if policy == 'SLRU' and network_cache * N_CONTENTS <= 6: # 6 KAs in the network
             experiment['cache_policy']['segments'] = 1
         EXPERIMENT_QUEUE.append(experiment)
