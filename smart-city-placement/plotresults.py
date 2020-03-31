@@ -26,8 +26,8 @@ plt.rcParams['pdf.use14corefonts'] = True
 plt.rcParams['text.usetex'] = False
 
 # Aspect ratio of the output figures
-# plt.rcParams['figure.figsize'] = 8, 5
-plt.rcParams['figure.figsize'] = 4, 2.5
+plt.rcParams['figure.figsize'] = 8, 5
+# plt.rcParams['figure.figsize'] = 5, 3
 
 # Size of font in legends
 LEGEND_SIZE = 14
@@ -228,7 +228,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, strategi
     desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
     desc['ycondvals'] = strategies
     desc['errorbar'] = False
-    desc['legend_loc'] = 'upper right'
+    desc['legend_loc'] = 'lower left'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
     desc['plotempty'] = PLOT_EMPTY_GRAPHS
@@ -256,7 +256,7 @@ def plot_latency_vs_cache_size(resultset, topology, alpha, cache_size_range, str
     desc['ycondvals'] = strategies
     desc['metric'] = ('LATENCY', 'MEAN')
     desc['errorbar'] = False
-    desc['legend_loc'] = 'upper right'
+    desc['legend_loc'] = 'lower left'
     desc['line_style'] = STRATEGY_STYLE
     desc['legend'] = STRATEGY_LEGEND
     desc['plotempty'] = PLOT_EMPTY_GRAPHS
@@ -349,18 +349,18 @@ def run(config, results, plotdir):
     # Plot graphs
     for topology in topologies:
         for cache_size in cache_sizes:
-            logger.info('Plotting cache hit ratio for topology %s and cache size %s vs alpha' % (topology, str(cache_size)))
-            plot_cache_hits_vs_alpha(resultset, topology, cache_size, alphas, strategies, plotdir)
-            logger.info('Plotting link load for topology %s vs cache size %s' % (topology, str(cache_size)))
-            plot_link_load_vs_alpha(resultset, topology, cache_size, alphas, strategies, plotdir)
+            # logger.info('Plotting cache hit ratio for topology %s and cache size %s vs alpha' % (topology, str(cache_size)))
+            # plot_cache_hits_vs_alpha(resultset, topology, cache_size, alphas, strategies, plotdir)
+            # logger.info('Plotting link load for topology %s vs cache size %s' % (topology, str(cache_size)))
+            # plot_link_load_vs_alpha(resultset, topology, cache_size, alphas, strategies, plotdir)
             logger.info('Plotting latency for topology %s vs cache size %s' % (topology, str(cache_size)))
             plot_latency_vs_alpha(resultset, topology, cache_size, alphas, strategies, plotdir)
     for topology in topologies:
         for alpha in alphas:
-            logger.info('Plotting cache hit ratio for topology %s and alpha %s vs cache size' % (topology, str(alpha)))
-            plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
-            logger.info('Plotting link load for topology %s and alpha %s vs cache size' % (topology, str(alpha)))
-            plot_link_load_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
+            # logger.info('Plotting cache hit ratio for topology %s and alpha %s vs cache size' % (topology, str(alpha)))
+            # plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
+            # logger.info('Plotting link load for topology %s and alpha %s vs cache size' % (topology, str(alpha)))
+            # plot_link_load_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
             logger.info('Plotting latency for topology %s and alpha %s vs cache size' % (topology, str(alpha)))
             plot_latency_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
     # for cache_size in cache_sizes:
