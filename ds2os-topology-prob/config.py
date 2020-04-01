@@ -20,7 +20,7 @@ PARALLEL_EXECUTION = False
 N_PROCESSES = cpu_count()
 
 # Number of times each experiment is replicated
-N_REPLICATIONS = 1
+N_REPLICATIONS = 3
 
 # Granularity of caching.
 # Currently, only OBJECT is supported
@@ -53,11 +53,14 @@ default['workload'] = {
 
 # mindestens 1 objekt pro cache, d.h. 6 objekte; 6/34465 = 0.00017408965
 # warum 56595 objekte in contentWriteTimes
-TOTAL_OBJECTS = 56595
+N_CONTENTS = 56595
+N_CACHES = 6
 
-NETWORK_CAPACITY = [6, 12, 18, 24, 36, 72, 180]
+CACHE_SIZES = [1, 2, 3, 4, 5, 6, 8, 16] # capacity per cache in objects
 
-NETWORK_CACHE = [size/TOTAL_OBJECTS for size in NETWORK_CAPACITY]
+NETWORK_CAPACITY = [(size * N_CACHES) for size in CACHE_SIZES] # total network capacity in objects
+
+NETWORK_CACHE = [(capacity / N_CONTENTS) for capacity in NETWORK_CAPACITY] # total network capacity as fraction of total content objects
 
 # Set cache placement
 default['cache_placement']['name'] = 'UNIFORM'

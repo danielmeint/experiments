@@ -27,6 +27,7 @@ plt.rcParams['text.usetex'] = False
 
 # Aspect ratio of the output figures
 plt.rcParams['figure.figsize'] = 8, 5
+# plt.rcParams['figure.figsize'] = 5, 3
 
 # Size of font in legends
 LEGEND_SIZE = 14
@@ -174,7 +175,7 @@ def plot_latency_vs_alpha(resultset, topology, cache_size, alpha_range, policies
     desc['ycondnames'] = [('cache_policy', 'name')] * len(policies)
     desc['ycondvals'] = policies
     desc['errorbar'] = False
-    desc['legend_loc'] = 'upper right'
+    desc['legend_loc'] = 'lower left'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
     desc['plotempty'] = PLOT_EMPTY_GRAPHS
@@ -202,7 +203,7 @@ def plot_latency_vs_cache_size(resultset, topology, alpha, cache_size_range, pol
     desc['ycondvals'] = policies
     desc['metric'] = ('LATENCY', 'MEAN')
     desc['errorbar'] = False
-    desc['legend_loc'] = 'upper right'
+    desc['legend_loc'] = 'lower left' if alpha < 1 else 'upper right'
     desc['line_style'] = POLICY_STYLE
     desc['legend'] = POLICY_LEGEND
     desc['plotempty'] = PLOT_EMPTY_GRAPHS
