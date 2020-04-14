@@ -20,7 +20,7 @@ PARALLEL_EXECUTION = False
 N_PROCESSES = cpu_count()
 
 # Number of times each experiment is replicated
-N_REPLICATIONS = 1
+N_REPLICATIONS = 5
 
 # Granularity of caching.
 # Currently, only OBJECT is supported
@@ -73,11 +73,11 @@ default['cache_policy']['name'] = 'LRU'
 
 # caching meta-policies / placement strategies
 STRATEGIES = [
-    'NO_CACHE',        # No caching, shortest-path routing
-    'LCE',             # Leave Copy Everywhere
-    'LCD',
-    'EDGE',
-    'CL4M',            # Betweenness Centrality, Cache Less For More
+    # 'NO_CACHE',        # No caching, shortest-path routing
+    # 'LCE',             # Leave Copy Everywhere
+    # 'LCD',
+    # 'EDGE',
+    # 'CL4M',            # Betweenness Centrality, Cache Less For More
     'RAND_BERNOULLI',  # Random Bernoulli: cache randomly in caches on path
     'PROB_CACHE',      # ProbCache
     'PCASTING',

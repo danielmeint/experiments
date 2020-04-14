@@ -210,7 +210,7 @@ def plot_mov_sensor_updates():
     # ax.set_title('Time between updates for temperature sensors in ms')
     ax.boxplot(interarrivaltimes, showfliers=True, vert=False)
     # plt.xticks([1, 2, 3, 4, 5, 6], ['tempin1', 'tempin2', 'tempin3', 'tempin4', 'tempin5', 'tempin6'])
-    plt.yticks([1, 2, 3], [f"movement{id}/movement" for id in range(1, 4)])
+    plt.yticks([1, 2, 3], [f"movement{id}" for id in range(1, 4)])
     # plt.
     plt.xlabel('Interarrival Time (min)')
     plt.show()
@@ -280,7 +280,21 @@ def main():
     print('hello')
     # plot_mov_sensor_updates()
     trace = read_csv('trace/subTraceWriteTimes.csv')
-    print(len([r for r in trace if r['operation'] == 'write' and r['accessedNodeAddress'] == '/agent3/tempin3']))
+    addresses = set()
+    firstTimer = 0
+    reRequests  = 0
+    for request in trace:
+        if request['operation'] == 'read':
+            address = f"{request['accessedNodeAddress']}/{request['lastWrite']}/{request['nextWrite']}"
+            if address in addresses:
+                reRequests += 1
+            else:
+                addresses.add(address)
+                firstTimer += 1
+    print('firsttimes:', firstTimer, 'rerequests:', reRequests)
+
+
+    # print(len([r for r in trace if r['operation'] == 'write' and r['accessedNodeAddress'] == '/agent3/tempin3']))
     # read_contents = set([r['accessedNodeAddress'] for r in trace if r['operation'] == 'read'])
     # all_contents = set([r['accessedNodeAddress'] for r in trace])
     # # print(read_contents, all_contents)

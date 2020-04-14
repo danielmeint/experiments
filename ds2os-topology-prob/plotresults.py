@@ -92,8 +92,8 @@ def run_ds2os(config, results, plotdir):
     print(cache_sizes)
     strategies = []
     # plot_cache_hits_vs_cache_size(resultset, topology, alpha, cache_sizes, strategies, plotdir)
-    # ds2os_plot_latency_vs_cache_size(
-    #     resultset, topology, cache_sizes, strategies, plotdir)
+    ds2os_plot_latency_vs_cache_size(
+        resultset, topology, cache_sizes, strategies, plotdir)
     ds2os_plot_cache_hits_vs_cache_size(
         resultset, topology, cache_sizes, strategies, plotdir)
     logger.info('Exit. Plots were saved in directory %s' %
@@ -133,23 +133,29 @@ def ds2os_plot_latency_vs_cache_size(resultset, topology, cache_size_range, stra
     desc = {}
     print('plotting strategies', strategies)
     # desc['title'] = f'Latency: T={topology}'
-    desc['xlabel'] = 'Total network cache capacity in number of objects (logarithmic scale)'
+    desc['xlabel'] = 'Capacity per cache in number of objects (logarithmic scale)'
     desc['ylabel'] = 'Latency in ms'
     desc['xscale'] = 'log'
     desc['xparam'] = ('cache_placement', 'network_cache')
     desc['xvals'] = cache_size_range
     desc['xticks'] = cache_size_range
+    desc['xticklabels'] = [1, 2, 3, 4, 5, 6, 8, 16]
     desc['filter'] = {'topology': {'name': topology},
                       'workload': {'name': 'DS2OS'}}
-    desc['ymetrics'] = [('LATENCY', 'MEAN')] * len(strategies)
-    desc['ycondnames'] = [('strategy', 'name')] * len(strategies)
-    desc['ycondvals'] = strategies
+    desc['ymetrics'] = [('LATENCY', 'MEAN')] * 5
+    desc['ycondnames'] = [('strategy', 'p')] * 5
+    desc['ycondvals'] =  [0.1, 0.2, 0.5, 0.8, 1]
     desc['metric'] = ('LATENCY', 'MEAN')
-    desc['errorbar'] = True
-    desc['legend_loc'] = 'upper right'
-    desc['line_style'] = STRATEGY_STYLE
-    desc['legend'] = STRATEGY_LEGEND
-    desc['plotempty'] = PLOT_EMPTY_GRAPHS
+    desc['errorbar'] = False
+    desc['legend_loc'] = 'bottom left'
+    desc['legend'] = {
+        0.1: 'Prob(0.1)',
+        0.2: 'Prob(0.2)',
+        0.5: 'Prob(0.5)',
+        0.8: 'Prob(0.8)',
+        1  : 'LCE',
+    }
+    # desc['plotempty'] = PLOT_EMPTY_GRAPHS
     plot_lines(resultset, desc, f'LATENCY_T={topology}.pdf', plotdir)
 
 
